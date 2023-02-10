@@ -27,6 +27,7 @@ function index() {
       }
       askUserToTakeAction={!emailSent && !stepTwo ? "Go back to" : ""}
       actionLink={!emailSent && !stepTwo ? "Login" : ""}
+      link="/login"
     >
       {!emailSent && !stepTwo && <Form />}
       {emailSent && <EmailSent />}
