@@ -1,7 +1,7 @@
-import Register from "./pages/auth/Register";
+import Reset from "./pages/auth/Reset";
 
 function App() {
-  return <Register />;
+  return <Reset />;
 }
 
 export default App;
