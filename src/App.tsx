@@ -1,5 +1,7 @@
+import Login from "./pages/auth/Login";
+
 function App() {
-  return <div>Assignment 2</div>;
+  return <Login />;
 }
 
 export default App;
