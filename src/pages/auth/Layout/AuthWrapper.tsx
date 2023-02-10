@@ -6,9 +6,8 @@ import logo from "../../../assets/logo.svg";
 type AuthWrapperProps = {
   title: String;
   subTitle: string;
-  askUserToTakeAction: string;
-  actionLink: string;
-  // actionText: ReactNode,
+  askUserToTakeAction?: string;
+  actionLink?: string;
   children: any;
   cover: React.ReactNode;
 };
