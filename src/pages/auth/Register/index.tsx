@@ -7,7 +7,7 @@ import StepTwo from "./components/StepTwo";
 
 function index() {
   const [emailSent, setEmailSent] = React.useState<boolean>(false);
-  const [stepTwo, setStepTwo] = React.useState<boolean>(true);
+  const [stepTwo, setStepTwo] = React.useState<boolean>(false);
   return (
     <AuthWrapper
       cover={<Cover />}
@@ -29,6 +29,7 @@ function index() {
         !emailSent && !stepTwo ? "Do you have an account?" : ""
       }
       actionLink={!emailSent && !stepTwo ? "Signin" : ""}
+      link="/login"
     >
       {!emailSent && !stepTwo && <Form />}
       {emailSent && <EmailSent />}

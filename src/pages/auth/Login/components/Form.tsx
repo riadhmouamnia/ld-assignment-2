@@ -41,7 +41,7 @@ function Form() {
           />
           <Typography
             fontWeight="bold"
-            color="secondary"
+            color="action.active"
             component="a"
             href="/reset"
             sx={{ textDecoration: "none" }}

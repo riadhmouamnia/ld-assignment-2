@@ -11,6 +11,7 @@ function index() {
       subTitle="Thanks to come back on coraly"
       askUserToTakeAction="Don't your have an account?"
       actionLink="Sign up now"
+      link="/register"
     >
       <Form />
     </AuthWrapper>

@@ -34,12 +34,12 @@ function ErrorPage() {
           <Typography
             textAlign="center"
             fontWeight="bold"
-            color="#312E43"
             variant="h6"
+            color="text.primary"
           >
             Page not found
           </Typography>
-          <Typography textAlign="center" color="#6F6D7B" variant="body1">
+          <Typography textAlign="center" color="text.secondary" variant="body1">
             The page you are trying to reach is not availble. It may have been
             deleted or its URL was misspelled.
           </Typography>

@@ -8,6 +8,7 @@ type AuthWrapperProps = {
   subTitle: string;
   askUserToTakeAction?: string;
   actionLink?: string;
+  link: string;
   children: any;
   cover: React.ReactNode;
 };
@@ -19,6 +20,7 @@ function AuthWrapper({
   subTitle,
   askUserToTakeAction,
   actionLink,
+  link,
 }: AuthWrapperProps) {
   const [valid, setValid] = React.useState<boolean>(false);
   const [user, setUser] = React.useState<boolean>(false);
@@ -46,10 +48,15 @@ function AuthWrapper({
             <img src={logo} alt="logo" width="44px" />
           </Box>
           <Box width="100%">
-            <Typography variant="h6" fontWeight="bold" mt={8}>
+            <Typography
+              variant="h6"
+              color="text.primary"
+              fontWeight="bold"
+              mt={8}
+            >
               {title}
             </Typography>
-            <Typography variant="body1" color="#6F6D7B">
+            <Typography variant="body1" color="text.secondary">
               {subTitle}
             </Typography>
           </Box>
@@ -58,9 +65,9 @@ function AuthWrapper({
             <Typography>{askUserToTakeAction}</Typography>
             <Typography
               fontWeight="bold"
-              color="secondary"
+              color="action.active"
               component="a"
-              href="/signup"
+              href={link}
               sx={{ textDecoration: "none" }}
             >
               {actionLink}

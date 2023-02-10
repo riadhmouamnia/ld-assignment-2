@@ -11,7 +11,7 @@ import { FormGroup } from "@mui/material";
 //styled anchor elemnt
 const Anchor = styled("a")(({ theme }) => ({
   fontWeight: "bold",
-  color: theme.palette.secondary.main,
+  color: theme.palette.action.active,
   textDecoration: "none",
   "&:hover": {
     textDecoration: "underline",
