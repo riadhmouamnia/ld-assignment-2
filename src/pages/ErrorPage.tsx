@@ -4,17 +4,42 @@ import Typography from "@mui/material/Typography";
 import Button from "@mui/material/Button";
 import Box from "@mui/material/Box";
 import error from "../assets/error.svg";
+import { styled } from "@mui/material/styles";
+
+const StyledContainer = styled(Container)({
+  display: "flex",
+  justifyContent: "center",
+  alignItems: "center",
+  height: "100vh",
+});
 
 function ErrorPage() {
   return (
-    <Container>
-      <Box>
+    <StyledContainer>
+      <Box
+        width={650}
+        sx={{
+          display: "flex",
+          flexDirection: "column",
+          justifyContent: "center",
+          alignItems: "center",
+          height: "100vh",
+          gap: 4,
+        }}
+      >
         <Box>
           <img src={error} alt="not found" />
         </Box>
         <Box>
-          <Typography variant="h6">Page not found</Typography>
-          <Typography variant="body1">
+          <Typography
+            textAlign="center"
+            fontWeight="bold"
+            color="#312E43"
+            variant="h6"
+          >
+            Page not found
+          </Typography>
+          <Typography textAlign="center" color="#6F6D7B" variant="body1">
             The page you are trying to reach is not availble. It may have been
             deleted or its URL was misspelled.
           </Typography>
@@ -23,7 +48,7 @@ function ErrorPage() {
           Go back
         </Button>
       </Box>
-    </Container>
+    </StyledContainer>
   );
 }
 
