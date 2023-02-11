@@ -6,32 +6,37 @@ import Form from "./components/Form";
 import StepTwo from "./components/StepTwo";
 
 function index() {
-  const [emailSent, setEmailSent] = React.useState<boolean>(false);
-  const [stepTwo, setStepTwo] = React.useState<boolean>(false);
+  const [currentStep, setCurrentStep] = React.useState(0);
+
+  const steps = [
+    {
+      title: "Did you forgot your password?",
+      subTitle: `Insert your email and we will send you a link
+       in your email box to reset your password.`,
+      body: <Form onNextStep={() => setCurrentStep(1)} />,
+    },
+    {
+      title: "Email was sent",
+      subTitle: `Check your email inbox. We sent you an email to edit your password.
+       If you didn't received the email, please check your SPAM inbox`,
+      body: <EmailSent onNextStep={() => setCurrentStep(2)} />,
+    },
+    {
+      title: "Complete your profile",
+      subTitle: "Insert all your information",
+      body: <StepTwo />,
+    },
+  ];
+
+  console.log(currentStep);
+
   return (
     <AuthWrapper
       cover={<Cover />}
-      title={
-        !emailSent && stepTwo
-          ? "Complete your profile"
-          : emailSent
-          ? "Email was sent"
-          : "Did you forgot your password?"
-      }
-      subTitle={
-        !emailSent && stepTwo
-          ? "Insert all your information"
-          : emailSent
-          ? "Check your email inbox. We sent you an email to edit your password. If you didn't received the email, please check your SPAM inbox"
-          : "Insert your email and we will send you a link in your email box to reset your password."
-      }
-      askUserToTakeAction={!emailSent && !stepTwo ? "Go back to" : ""}
-      actionLink={!emailSent && !stepTwo ? "Login" : ""}
-      link="/login"
+      title={steps[currentStep].title}
+      subTitle={steps[currentStep].subTitle}
     >
-      {!emailSent && !stepTwo && <Form />}
-      {emailSent && <EmailSent />}
-      {stepTwo && <StepTwo />}
+      {steps[currentStep].body}
     </AuthWrapper>
   );
 }

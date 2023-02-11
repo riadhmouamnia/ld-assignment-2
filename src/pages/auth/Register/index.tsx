@@ -6,34 +6,34 @@ import Form from "./components/Form";
 import StepTwo from "./components/StepTwo";
 
 function index() {
-  const [emailSent, setEmailSent] = React.useState<boolean>(false);
-  const [stepTwo, setStepTwo] = React.useState<boolean>(false);
+  const [currentStep, setCurrentStep] = React.useState(0);
+
+  const steps = [
+    {
+      title: "Create your workspace",
+      subTitle:
+        "Coraly is the place to manage your works process from the same place",
+      body: <Form onNextStep={() => setCurrentStep(1)} />,
+    },
+    {
+      title: "Your workspace is ready",
+      subTitle: "We sent you a confermation email.",
+      body: <EmailSent onNextStep={() => setCurrentStep(2)} />,
+    },
+    {
+      title: "Complete your profile",
+      subTitle: "Insert all your information",
+      body: <StepTwo />,
+    },
+  ];
+
   return (
     <AuthWrapper
       cover={<Cover />}
-      title={
-        !emailSent && stepTwo
-          ? "Complete your profile"
-          : emailSent
-          ? "Your workspace is ready"
-          : "Create your workspace"
-      }
-      subTitle={
-        !emailSent && stepTwo
-          ? "Insert all your information"
-          : emailSent
-          ? "We sent you a confermation email."
-          : "Coraly is the place to manage your works process from the same place"
-      }
-      askUserToTakeAction={
-        !emailSent && !stepTwo ? "Do you have an account?" : ""
-      }
-      actionLink={!emailSent && !stepTwo ? "Signin" : ""}
-      link="/login"
+      title={steps[currentStep].title}
+      subTitle={steps[currentStep].subTitle}
     >
-      {!emailSent && !stepTwo && <Form />}
-      {emailSent && <EmailSent />}
-      {stepTwo && <StepTwo />}
+      {steps[currentStep].body}
     </AuthWrapper>
   );
 }

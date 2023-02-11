@@ -2,13 +2,20 @@ import Box from "@mui/material/Box";
 import Button from "@mui/material/Button";
 import Checkbox from "@mui/material/Checkbox";
 import FormControlLabel from "@mui/material/FormControlLabel";
-import TextField from "@mui/material/TextField";
 import Typography from "@mui/material/Typography";
 import React from "react";
 import { styled } from "@mui/material/styles";
 import { FormGroup } from "@mui/material";
+import { Formik, Form as FormikForm } from "formik";
+import * as yup from "yup";
+import Input from "../../../../components/Input";
+import { Link, useNavigate } from "react-router-dom";
 
-//styled anchor elemnt
+type InitialValues = {
+  email: string;
+  workspace: string;
+};
+
 const Anchor = styled("a")(({ theme }) => ({
   fontWeight: "bold",
   color: theme.palette.action.active,
@@ -18,58 +25,103 @@ const Anchor = styled("a")(({ theme }) => ({
   },
 }));
 
-function Form() {
+interface Props {
+  onNextStep: () => void;
+}
+
+function Form({ onNextStep }: Props) {
+  const [isTermsAccepted, setTermsAccpeted] = React.useState(false);
+  const [isPrivacyAccepted, setPrivacyAccepted] = React.useState(false);
+  const navigate = useNavigate();
+
+  const onSubmit = (values: InitialValues) => {
+    const { email, workspace } = values;
+    navigate(`?workspaceName=${workspace}&email=${email}`);
+    console.log(values);
+    onNextStep();
+  };
+
   return (
     <>
-      <Box component="form">
-        <TextField
-          margin="normal"
-          fullWidth
-          id="workspace-name"
-          label="Workspace Name"
-          name="workspace-name"
-          autoComplete="workspace-name"
-          autoFocus
-          size="small"
-        />
-        <TextField
-          margin="normal"
-          fullWidth
-          id="email"
-          label="Email"
-          name="email"
-          autoComplete="email"
-          autoFocus
-          size="small"
-        />
-        <Box>
-          <FormGroup>
-            <FormControlLabel
-              control={<Checkbox />}
-              label={
-                <Typography my={1}>
-                  Agree with <Anchor href="/Terms">Terms and conditions</Anchor>
-                  , <Anchor href="/Privacy">Privacy Policy</Anchor> and
-                  <Anchor href="/Coockies">Coockies Policy</Anchor>
-                </Typography>
-              }
+      <Formik
+        initialValues={{ email: "", workspace: "" }}
+        onSubmit={onSubmit}
+        validationSchema={yup.object({
+          email: yup.string().email().required(),
+          workspace: yup.string().required(),
+        })}
+      >
+        {() => (
+          <FormikForm>
+            <Input
+              margin="normal"
+              fullWidth
+              label="Workspace Name"
+              name="workspace"
+              autoComplete="workspace"
+              size="small"
             />
-            <FormControlLabel
-              control={<Checkbox />}
-              label="I authorize Coraly to process my personal data in order to receive informational, promotional and commercial communications via e-mail."
+            <Input
+              margin="normal"
+              fullWidth
+              id="email"
+              label="Email"
+              name="email"
+              autoComplete="email"
+              size="small"
             />
-          </FormGroup>
-        </Box>
-        <Button
-          fullWidth
-          variant="contained"
-          type="submit"
-          disableElevation
-          sx={{ mt: 3 }}
-          color="secondary"
-        >
-          Create now the account
-        </Button>
+            <Box>
+              <FormGroup>
+                <FormControlLabel
+                  control={
+                    <Checkbox
+                      onChange={(e) => setTermsAccpeted(e.target.checked)}
+                    />
+                  }
+                  label={
+                    <Typography my={1}>
+                      Agree with{" "}
+                      <Anchor href="/Terms">Terms and conditions</Anchor>,{" "}
+                      <Anchor href="/Privacy">Privacy Policy</Anchor> and
+                      <Anchor href="/Coockies">Coockies Policy</Anchor>
+                    </Typography>
+                  }
+                />
+                <FormControlLabel
+                  control={
+                    <Checkbox
+                      onChange={(e) => setPrivacyAccepted(e.target.checked)}
+                    />
+                  }
+                  label="I authorize Coraly to process my personal data in order to receive informational, promotional and commercial communications via e-mail."
+                />
+              </FormGroup>
+            </Box>
+            <Button
+              fullWidth
+              variant="contained"
+              type="submit"
+              disableElevation
+              sx={{ mt: 3 }}
+              color="secondary"
+              disabled={!isPrivacyAccepted || !isTermsAccepted}
+            >
+              Create now the account
+            </Button>
+          </FormikForm>
+        )}
+      </Formik>
+      <Box width="100%" mt={2} display="flex" gap={1}>
+        <Typography>Do you have an account?</Typography>
+        <Link to="/login" style={{ textDecoration: "none" }}>
+          <Typography
+            fontWeight="bold"
+            color="action.active"
+            sx={{ textDecoration: "none" }}
+          >
+            Login
+          </Typography>
+        </Link>
       </Box>
     </>
   );

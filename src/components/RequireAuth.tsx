@@ -1,10 +1,11 @@
 import { useLocation, Navigate, Outlet } from "react-router-dom";
 import { useSelector } from "react-redux";
+import { useAppSelector } from "../redux/hooks";
 
 function RequireAuth() {
-  const { success } = useSelector((state: object) => state.auth);
+  const { userInfo } = useAppSelector(({ auth }) => auth);
   const location = useLocation();
-  return success ? (
+  return !!userInfo ? (
     <Outlet />
   ) : (
     <Navigate to="/login" state={{ from: location }} replace />

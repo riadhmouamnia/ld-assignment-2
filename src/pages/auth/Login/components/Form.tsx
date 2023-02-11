@@ -2,96 +2,117 @@ import Box from "@mui/material/Box";
 import Button from "@mui/material/Button";
 import Checkbox from "@mui/material/Checkbox";
 import FormControlLabel from "@mui/material/FormControlLabel";
-import TextField from "@mui/material/TextField";
 import Typography from "@mui/material/Typography";
 import React from "react";
 import { useDispatch } from "react-redux";
 import { Link, useNavigate } from "react-router-dom";
+import { login, UserInfo } from "../../../../redux/features/auth/authSlice";
+import { cacheService } from "../../../../utils/cacheService";
+import { Formik, Form as FormikForm } from "formik";
+import * as yup from "yup";
+import Input from "../../../../components/Input";
 
-function Form({ setValid, setNotValid }: any) {
-  const [email, setEmail] = React.useState<string>("");
-  const [password, setPassword] = React.useState<string>("");
+type LoginResponse = UserInfo & { password: string };
+
+type InitialValues = {
+  email: string;
+  password: string;
+};
+
+interface Props {
+  setAuthState: (authState: { idle: boolean; isAuthFailure: boolean }) => void;
+}
+
+function Form({ setAuthState }: Props) {
   const dispatch = useDispatch();
   const navigate = useNavigate();
 
-  const handleSubmit = async (e: React.FormEvent<HTMLFormElement>) => {
-    e.preventDefault();
-    const response = await fetch("http://localhost:3000/users");
-    const users = await response.json();
-    const user = users.find(
-      (user: any) => user.email === email && user.password === password
-    );
-    if (user) {
-      setValid(true);
-      setNotValid(false);
+  const onSubmit = async (values: InitialValues) => {
+    try {
+      const response = await fetch("http://localhost:3000/users");
+      const users = (await response.json()) as LoginResponse[];
+      const user = users.find(
+        (user: any) =>
+          user.email === values.email && user.password === values.password
+      );
+      if (!user) {
+        throw new Error("User not found");
+      }
+
+      const { password: _password, ...rest } = user;
+      cacheService.saveState("user", { userInfo: rest });
+
+      setAuthState({ idle: false, isAuthFailure: false });
       setTimeout(() => {
+        dispatch(login(rest));
         navigate("/");
       }, 1500);
-    } else {
-      setNotValid(true);
-      setValid(false);
-      console.log("user not found");
+    } catch (error) {
+      setAuthState({ idle: false, isAuthFailure: true });
     }
-
-    console.log(email, password);
   };
 
   return (
     <>
-      <Box width="100%" onSubmit={handleSubmit} component="form" sx={{ mt: 1 }}>
-        <TextField
-          margin="normal"
-          fullWidth
-          id="email"
-          label="Email"
-          name="email"
-          value={email}
-          onChange={(e) => setEmail(e.target.value)}
-          autoComplete="email"
-          autoFocus
-          size="small"
-        />
-        <TextField
-          margin="normal"
-          fullWidth
-          name="password"
-          value={password}
-          onChange={(e) => setPassword(e.target.value)}
-          label="Password"
-          type="password"
-          id="password"
-          size="small"
-        />
-        <Box
-          display="flex"
-          alignItems="center"
-          mb={4}
-          justifyContent="space-between"
-        >
-          <FormControlLabel
-            control={<Checkbox value="remember" color="primary" />}
-            label="Remember me"
-          />
-          <Link to="/reset" style={{ textDecoration: "none" }}>
-            <Typography
-              fontWeight="bold"
-              color="action.active"
-              sx={{ textDecoration: "none" }}
+      <Formik
+        initialValues={{ email: "", password: "" }}
+        onSubmit={onSubmit}
+        validationSchema={yup.object({
+          email: yup.string().email().required(),
+          password: yup.string().required().min(8).max(24),
+        })}
+      >
+        {() => (
+          <FormikForm>
+            <Input
+              margin="normal"
+              fullWidth
+              label="Email"
+              name="email"
+              autoComplete="email"
+              autoFocus
+              size="small"
+            />
+            <Input
+              margin="normal"
+              fullWidth
+              name="password"
+              label="Password"
+              type="password"
+              size="small"
+            />
+            <Box
+              display="flex"
+              alignItems="center"
+              mb={4}
+              justifyContent="space-between"
             >
-              Forget password
-            </Typography>
-          </Link>
-        </Box>
-        <Button
-          fullWidth
-          type="submit"
-          variant="contained"
-          disableElevation
-          sx={{ mt: 3, mb: 2 }}
-        >
-          Login
-        </Button>
-      </Box>
+              <FormControlLabel
+                control={<Checkbox value="remember" color="primary" />}
+                label="Remember me"
+              />
+              <Link to="/reset" style={{ textDecoration: "none" }}>
+                <Typography
+                  fontWeight="bold"
+                  color="action.active"
+                  sx={{ textDecoration: "none" }}
+                >
+                  Forget password
+                </Typography>
+              </Link>
+            </Box>
+            <Button
+              fullWidth
+              type="submit"
+              variant="contained"
+              disableElevation
+              sx={{ mt: 3, mb: 2 }}
+            >
+              Login
+            </Button>
+          </FormikForm>
+        )}
+      </Formik>
     </>
   );
 }
