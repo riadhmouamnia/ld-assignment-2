@@ -5,17 +5,48 @@ import FormControlLabel from "@mui/material/FormControlLabel";
 import TextField from "@mui/material/TextField";
 import Typography from "@mui/material/Typography";
 import React from "react";
+import { useDispatch } from "react-redux";
+import { Link, useNavigate } from "react-router-dom";
 
-function Form() {
+function Form({ setValid, setNotValid }: any) {
+  const [email, setEmail] = React.useState<string>("");
+  const [password, setPassword] = React.useState<string>("");
+  const dispatch = useDispatch();
+  const navigate = useNavigate();
+
+  const handleSubmit = async (e: React.FormEvent<HTMLFormElement>) => {
+    e.preventDefault();
+    const response = await fetch("http://localhost:3000/users");
+    const users = await response.json();
+    const user = users.find(
+      (user: any) => user.email === email && user.password === password
+    );
+    if (user) {
+      setValid(true);
+      setNotValid(false);
+      setTimeout(() => {
+        navigate("/");
+      }, 1500);
+    } else {
+      setNotValid(true);
+      setValid(false);
+      console.log("user not found");
+    }
+
+    console.log(email, password);
+  };
+
   return (
     <>
-      <Box width="100%" component="form" sx={{ mt: 1 }}>
+      <Box width="100%" onSubmit={handleSubmit} component="form" sx={{ mt: 1 }}>
         <TextField
           margin="normal"
           fullWidth
           id="email"
           label="Email"
           name="email"
+          value={email}
+          onChange={(e) => setEmail(e.target.value)}
           autoComplete="email"
           autoFocus
           size="small"
@@ -24,6 +55,8 @@ function Form() {
           margin="normal"
           fullWidth
           name="password"
+          value={password}
+          onChange={(e) => setPassword(e.target.value)}
           label="Password"
           type="password"
           id="password"
@@ -39,15 +72,15 @@ function Form() {
             control={<Checkbox value="remember" color="primary" />}
             label="Remember me"
           />
-          <Typography
-            fontWeight="bold"
-            color="action.active"
-            component="a"
-            href="/reset"
-            sx={{ textDecoration: "none" }}
-          >
-            Forget password
-          </Typography>
+          <Link to="/reset" style={{ textDecoration: "none" }}>
+            <Typography
+              fontWeight="bold"
+              color="action.active"
+              sx={{ textDecoration: "none" }}
+            >
+              Forget password
+            </Typography>
+          </Link>
         </Box>
         <Button
           fullWidth
