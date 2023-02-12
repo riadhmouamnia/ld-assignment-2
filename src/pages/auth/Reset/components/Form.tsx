@@ -1,11 +1,6 @@
 import Box from "@mui/material/Box";
 import Button from "@mui/material/Button";
-import Checkbox from "@mui/material/Checkbox";
-import FormControlLabel from "@mui/material/FormControlLabel";
-import TextField from "@mui/material/TextField";
 import Typography from "@mui/material/Typography";
-import React from "react";
-import { styled } from "@mui/material/styles";
 import { Link, useNavigate } from "react-router-dom";
 import { Formik, Form as FormikForm } from "formik";
 import Input from "../../../../components/Input";
@@ -14,15 +9,6 @@ import * as yup from "yup";
 type InitialValues = {
   email: string;
 };
-
-const Anchor = styled("a")(({ theme }) => ({
-  fontWeight: "bold",
-  color: theme.palette.secondary.main,
-  textDecoration: "none",
-  "&:hover": {
-    textDecoration: "underline",
-  },
-}));
 
 interface Props {
   onNextStep: () => void;

@@ -17,7 +17,7 @@ function index() {
     },
     {
       title: "Your workspace is ready",
-      subTitle: "We sent you a confermation email.",
+      subTitle: "Check your email inbox.We sent you a confermation Email.",
       body: <EmailSent onNextStep={() => setCurrentStep(2)} />,
     },
     {

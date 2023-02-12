@@ -22,8 +22,8 @@ function index() {
       body: <EmailSent onNextStep={() => setCurrentStep(2)} />,
     },
     {
-      title: "Complete your profile",
-      subTitle: "Insert all your information",
+      title: "Insert new password",
+      subTitle: "Enter your new password to access the platform",
       body: <StepTwo />,
     },
   ];

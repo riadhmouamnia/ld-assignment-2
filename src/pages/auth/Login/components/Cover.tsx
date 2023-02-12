@@ -1,6 +1,5 @@
-import React from "react";
 import { Box, Typography } from "@mui/material";
-import dotts from "../../../../assets/auth/dotts.svg";
+import dotts from "../../../../assets/auth/dottsLogin.svg";
 import Ellipse from "../../../../assets/auth/login/Ellipse.svg";
 import Polygon from "../../../../assets/auth/login/Polygon.svg";
 import HalfEllipse from "../../../../assets/auth/login/HalfEllipse.svg";
@@ -24,12 +23,12 @@ function Cover() {
           <Typography
             display="block"
             variant="h2"
+            color="text.primary"
             sx={{
               fontSize: "48px",
               width: "650px",
               px: 4,
               fontWeight: "bold",
-              color: "#464356",
               zIndex: 1,
               position: "absolute",
               left: -350,
@@ -40,22 +39,32 @@ function Cover() {
             Get Started with Coraly now and Improve your workflow
           </Typography>
 
-          <Box sx={{ position: "absolute", top: -215, left: -222, zIndex: 0 }}>
-            <img src={dotts} />
-          </Box>
+          <Box
+            component="img"
+            src={dotts}
+            sx={{ position: "absolute", top: -215, left: -222, zIndex: 0 }}
+          />
         </Box>
-        <Box sx={{ position: "absolute", top: 0, left: 0 }}>
-          <img src={Ellipse} />
-        </Box>
-        <Box sx={{ position: "absolute", top: 40, right: 0 }}>
-          <img src={Polygon} />
-        </Box>
-        <Box sx={{ position: "absolute", top: 540, left: 30 }}>
-          <img src={HalfEllipse} />
-        </Box>
-        <Box sx={{ position: "absolute", top: 655, right: 0 }}>
-          <img src={Rectangle} />
-        </Box>
+        <Box
+          component="img"
+          src={Ellipse}
+          sx={{ position: "absolute", top: 0, left: 0 }}
+        />
+        <Box
+          component="img"
+          src={Polygon}
+          sx={{ position: "absolute", top: 40, right: 0 }}
+        />
+        <Box
+          component="img"
+          src={HalfEllipse}
+          sx={{ position: "absolute", top: 540, left: 30 }}
+        />
+        <Box
+          component="img"
+          src={Rectangle}
+          sx={{ position: "absolute", bottom: -6, right: 0 }}
+        />
       </Box>
     </>
   );

@@ -1,5 +1,4 @@
-import { Box, Button, TextField } from "@mui/material";
-import React from "react";
+import Button from "@mui/material/Button";
 import { Formik, Form } from "formik";
 import * as yup from "yup";
 import { useSearchParams } from "react-router-dom";
@@ -15,6 +14,7 @@ function StepTwo() {
   const email = params.get("email"); // this is supposed to be token or something else
 
   const onSubmit = (values: InitialValues) => {
+    // save those for later if we want to pass the to our db for updates
     const { password, confirmPassword } = values;
     console.log({ ...values, email });
   };
@@ -36,11 +36,11 @@ function StepTwo() {
           <Input
             margin="normal"
             fullWidth
-            autoFocus
             name="password"
             label="New password"
             type="password"
             size="small"
+            autoFocus
           />
           <Input
             margin="normal"

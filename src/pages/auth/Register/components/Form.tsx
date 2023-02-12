@@ -60,6 +60,7 @@ function Form({ onNextStep }: Props) {
               name="workspace"
               autoComplete="workspace"
               size="small"
+              autoFocus
             />
             <Input
               margin="normal"
@@ -83,7 +84,7 @@ function Form({ onNextStep }: Props) {
                       Agree with{" "}
                       <Anchor href="/Terms">Terms and conditions</Anchor>,{" "}
                       <Anchor href="/Privacy">Privacy Policy</Anchor> and
-                      <Anchor href="/Coockies">Coockies Policy</Anchor>
+                      <Anchor href="/Coockies"> Coockies Policy</Anchor>
                     </Typography>
                   }
                 />
@@ -102,7 +103,7 @@ function Form({ onNextStep }: Props) {
               variant="contained"
               type="submit"
               disableElevation
-              sx={{ mt: 3 }}
+              sx={{ mt: 2 }}
               color="secondary"
               disabled={!isPrivacyAccepted || !isTermsAccepted}
             >
