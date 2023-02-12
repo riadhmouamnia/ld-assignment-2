@@ -1,36 +1,27 @@
 import React from "react";
-import { Alert, Box, Grid, Snackbar, Typography } from "@mui/material";
+import { Box, Grid, Typography } from "@mui/material";
 import Paper from "@mui/material/Paper";
 import logo from "../../../assets/logo.svg";
+import { Link, useNavigate } from "react-router-dom";
+import { useAppSelector } from "../../../redux/hooks";
 
 type AuthWrapperProps = {
   title: String;
   subTitle: string;
-  askUserToTakeAction?: string;
-  actionLink?: string;
-  link: string;
   children: any;
   cover: React.ReactNode;
 };
 
-function AuthWrapper({
-  children,
-  cover,
-  title,
-  subTitle,
-  askUserToTakeAction,
-  actionLink,
-  link,
-}: AuthWrapperProps) {
-  const [valid, setValid] = React.useState<boolean>(false);
-  const [user, setUser] = React.useState<boolean>(false);
-  const handleClick = () => {
-    setValid(true);
-  };
+function AuthWrapper({ children, cover, title, subTitle }: AuthWrapperProps) {
+  const { userInfo } = useAppSelector(({ auth }) => auth);
+  const navigate = useNavigate();
 
-  const handleClose = () => {
-    setValid(false);
-  };
+  React.useEffect(() => {
+    if (userInfo) {
+      navigate("/");
+    }
+  }, [userInfo]);
+
   return (
     <Grid container component="main" sx={{ height: "100vh" }}>
       <Grid item px={3} xs={12} sm={8} md={5} component={Paper} square>
@@ -42,6 +33,7 @@ function AuthWrapper({
             flexDirection: "column",
             alignItems: "center",
             gap: 4,
+            width: "70%",
           }}
         >
           <Box width="100%">
@@ -61,28 +53,7 @@ function AuthWrapper({
             </Typography>
           </Box>
           {children}
-          <Box width="100%" mt={2} display="flex" gap={1}>
-            <Typography>{askUserToTakeAction}</Typography>
-            <Typography
-              fontWeight="bold"
-              color="action.active"
-              component="a"
-              href={link}
-              sx={{ textDecoration: "none" }}
-            >
-              {actionLink}
-            </Typography>
-          </Box>
         </Box>
-        <Snackbar open={valid} autoHideDuration={6000} onClose={handleClose}>
-          <Alert
-            onClose={handleClose}
-            severity="success"
-            sx={{ width: "100%" }}
-          >
-            Loged in to workspace successfully!
-          </Alert>
-        </Snackbar>
       </Grid>
       <Grid item xs={false} sm={4} md={7}>
         {cover}

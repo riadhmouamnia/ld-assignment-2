@@ -5,6 +5,7 @@ import Button from "@mui/material/Button";
 import Box from "@mui/material/Box";
 import error from "../assets/error.svg";
 import { styled } from "@mui/material/styles";
+import { Link } from "react-router-dom";
 
 const StyledContainer = styled(Container)({
   display: "flex",
@@ -44,9 +45,11 @@ function ErrorPage() {
             deleted or its URL was misspelled.
           </Typography>
         </Box>
-        <Button variant="contained" disableElevation>
-          Go back
-        </Button>
+        <Link to="/">
+          <Button variant="contained" disableElevation>
+            Go back
+          </Button>
+        </Link>
       </Box>
     </StyledContainer>
   );
