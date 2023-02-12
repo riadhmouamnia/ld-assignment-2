@@ -105,7 +105,7 @@ function Form({ setAuthState, setSnackBarMsg }: Props) {
                 control={
                   <Checkbox
                     value="remember"
-                    color="primary"
+                    // color="error"
                     onChange={(e) => setIsRememberMe(e.target.checked)}
                   />
                 }
