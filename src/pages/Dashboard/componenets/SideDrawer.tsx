@@ -1,5 +1,5 @@
 import React from "react";
-import { Typography } from "@mui/material";
+import { Typography, Box } from "@mui/material";
 import { styled, Theme, CSSObject } from "@mui/material/styles";
 import List from "@mui/material/List";
 import MuiDrawer from "@mui/material/Drawer";
@@ -26,11 +26,6 @@ import { logout } from "../../../redux/features/auth/authSlice";
 import { cacheService } from "../../../utils/cacheService";
 import { drawerWidth } from "./Layout";
 
-const StyledImg = styled("img")({
-  //   width: "100%",
-  //   height: "100%",
-});
-
 const StyledIcon = styled(Icon)({
   display: "flex",
   justifyContent: "center",
@@ -40,16 +35,24 @@ const StyledIcon = styled(Icon)({
 });
 
 const draworElemnts = [
-  { text: "Lasting Dynamics", icon: <StyledImg src={LD} />, path: "#" },
-  { text: "Apps", icon: <StyledImg src={Apps} />, path: "#" },
-  { text: "Teams", icon: <StyledImg src={Groups} />, path: "#" },
-  { text: "Files", icon: <StyledImg src={Files} />, path: "#" },
-  { text: "Database", icon: <StyledImg src={Database} />, path: "#" },
-  { text: "share", icon: <StyledImg src={Share} />, path: "#" },
-  { text: "development", icon: <StyledImg src={Dev} />, path: "#" },
-  { text: "Network", icon: <StyledImg src={Network} />, path: "#" },
-  { text: "Customer Support", icon: <StyledImg src={Support} />, path: "#" },
-  { text: "Logout", icon: <StyledImg src={Logout} />, path: "#" },
+  {
+    text: "Lasting Dynamics",
+    icon: <Box component="img" src={LD} />,
+    path: "#",
+  },
+  { text: "Apps", icon: <Box component="img" src={Apps} />, path: "#" },
+  { text: "Teams", icon: <Box component="img" src={Groups} />, path: "#" },
+  { text: "Files", icon: <Box component="img" src={Files} />, path: "#" },
+  { text: "Database", icon: <Box component="img" src={Database} />, path: "#" },
+  { text: "share", icon: <Box component="img" src={Share} />, path: "#" },
+  { text: "development", icon: <Box component="img" src={Dev} />, path: "#" },
+  { text: "Network", icon: <Box component="img" src={Network} />, path: "#" },
+  {
+    text: "Customer Support",
+    icon: <Box component="img" src={Support} />,
+    path: "#",
+  },
+  { text: "Logout", icon: <Box component="img" src={Logout} />, path: "#" },
 ];
 
 const openedMixin = (theme: Theme): CSSObject => ({
@@ -121,7 +124,7 @@ function SideDrawer({ open, setOpen }: Props) {
         <DrawerHeader>
           {open ? <Typography variant="h6">Coraly Academy</Typography> : null}
           <IconButton onClick={handleDrawerClose}>
-            <StyledImg src={Menu} />
+            <Box component="img" src={Menu} />
           </IconButton>
         </DrawerHeader>
         <List>
