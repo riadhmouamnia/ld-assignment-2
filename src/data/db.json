@@ -24,5 +24,143 @@
       "name": "Dwayne",
       "surname": "Wade"
     }
+  ],
+  "processes": [
+    {
+      "id": 1,
+      "name": "Process 1",
+      "color": "#47BDFF",
+      "private": false,
+      "data": [
+        {
+          "id": 1,
+          "_id": "P1D1-001",
+          "name": "John Doe",
+          "phone": "555-555-5555",
+          "processId": "P1-001",
+          "reporter": "Riadh",
+          "date": "01/01/2023"
+        }
+      ]
+    },
+    {
+      "id": 2,
+      "name": "Process 2",
+      "color": "#FF47B5",
+      "private": false,
+      "data": [
+        {
+          "id": 2,
+          "_id": "P2D1-002",
+          "name": "Jane Doe",
+          "phone": "555-555-5556",
+          "processId": "P2-002",
+          "reporter": "Afaf",
+          "date": "01/02/2023"
+        }
+      ]
+    },
+    {
+      "id": 3,
+      "name": "Process 3",
+      "color": "#FF9F47",
+      "private": true,
+      "data": [
+        {
+          "id": 3,
+          "_id": "P3D1-003",
+          "name": "Jim Smith",
+          "phone": "555-555-5557",
+          "processId": "P3-003",
+          "reporter": "Abdo",
+          "date": "01/03/2023"
+        }
+      ]
+    },
+    {
+      "id": 4,
+      "name": "Process 4",
+      "color": "#6C47FF",
+      "private": false,
+      "data": [
+        {
+          "id": 4,
+          "_id": "P4D1-004",
+          "name": "Emily Johnson",
+          "phone": "555-555-5558",
+          "processId": "P4-004",
+          "reporter": "Riadh",
+          "date": "01/04/2023"
+        }
+      ]
+    },
+    {
+      "id": 5,
+      "name": "Process 5",
+      "color": "#2EF1CE",
+      "private": true,
+      "data": [
+        {
+          "id": 5,
+          "_id": "P5D1-005",
+          "name": "William Brown",
+          "phone": "555-555-5559",
+          "processId": "P5-005",
+          "reporter": "Afaf",
+          "date": "01/05/2023"
+        }
+      ]
+    },
+    {
+      "id": 6,
+      "name": "Process 6",
+      "color": "#47BDFF",
+      "private": false,
+      "data": [
+        {
+          "id": 6,
+          "_id": "AOD-006",
+          "name": "William Brown",
+          "phone": "555-555-5560",
+          "processId": "PID-001",
+          "reporter": "Riadh",
+          "date": "01/06/2022"
+        }
+      ]
+    },
+    {
+      "id": 7,
+      "name": "Process 7",
+      "color": "#47BDFF",
+      "private": false,
+      "data": [
+        {
+          "id": 7,
+          "_id": "AOD-153",
+          "name": "John Doe",
+          "phone": "555-555-5555",
+          "processId": "IT09111111",
+          "reporter": "Riadh",
+          "date": "01/20/2023"
+        }
+      ]
+    },
+    {
+      "id": 8,
+      "name": "Process 8",
+      "color": "#FF47B5",
+      "private": false,
+      "data": [
+        {
+          "id": 8,
+          "_id": "AOD-154",
+          "name": "Jane Doe",
+          "phone": "555-555-5556",
+          "processId": "IT09222222",
+          "reporter": "Afaf",
+          "date": "01/21/2023"
+        }
+      ]
+    }
   ]
 }
