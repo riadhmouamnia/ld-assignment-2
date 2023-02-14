@@ -14,6 +14,10 @@ const StyledContainer = styled(Container)({
   height: "100vh",
 });
 
+const StyledLink = styled(Link)({
+  textDecoration: "none",
+});
+
 function ErrorPage() {
   return (
     <StyledContainer>
@@ -45,11 +49,11 @@ function ErrorPage() {
             deleted or its URL was misspelled.
           </Typography>
         </Box>
-        <Link to="/">
+        <StyledLink to="/">
           <Button variant="contained" disableElevation>
             Go back
           </Button>
-        </Link>
+        </StyledLink>
       </Box>
     </StyledContainer>
   );

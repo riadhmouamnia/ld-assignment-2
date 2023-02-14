@@ -10,6 +10,9 @@ const theme = createTheme({
       fontWeight: "bold",
       textTransform: "none",
     },
+    h4: {
+      fontWeight: "bold",
+    },
   },
   components: componentOverrides,
   shape: {
