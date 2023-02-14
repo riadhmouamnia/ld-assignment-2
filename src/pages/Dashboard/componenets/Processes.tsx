@@ -14,7 +14,6 @@ interface ResponseData {
   private?: boolean;
   // data: [];
 }
-
 const Processes: React.FC = () => {
   const [open, setOpen] = React.useState<boolean>(false);
   const [processes, setProcesses] = useState<ResponseData[]>([]);
@@ -47,7 +46,6 @@ const Processes: React.FC = () => {
           tasks
         </Typography>
       </Box>
-      {/* <CreateProcess /> */}
       <Grid container gap={3} mt={4}>
         <Grid item>
           <AddCard HndleOpen={HndleOpen} />
