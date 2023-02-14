@@ -20,12 +20,12 @@ const StyledPaper = styled(Box)({
 });
 
 type Props = {
-  setOpen: (open: boolean) => void;
+  HndleOpen: React.MouseEventHandler<HTMLDivElement> | undefined;
 };
 
-function AddCard({ setOpen }: Props) {
+function AddCard({ HndleOpen }: Props) {
   return (
-    <StyledPaper onClick={setOpen}>
+    <StyledPaper onClick={HndleOpen}>
       <Box
         display="flex"
         flexDirection="column"

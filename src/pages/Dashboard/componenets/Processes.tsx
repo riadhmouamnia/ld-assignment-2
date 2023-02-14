@@ -16,18 +16,12 @@ interface ResponseData {
 }
 
 const Processes: React.FC = () => {
-  const [open, setOpen] = useState(false);
-  const colors = [
-    { name: "Red", color: "#ff0000" },
-    { name: "Orange", color: "#ffa500" },
-    { name: "Yellow", color: "#ffff00" },
-    { name: "Green", color: "#00ff00" },
-    { name: "Blue", color: "#0000ff" },
-    { name: "Indigo", color: "#4b0082" },
-    { name: "Violet", color: "#9400d3" },
-  ];
+  const [open, setOpen] = React.useState<boolean>(false);
   const [processes, setProcesses] = useState<ResponseData[]>([]);
   const { userInfo } = useAppSelector(({ auth }) => auth);
+  const HndleOpen: React.MouseEventHandler<HTMLDivElement> = () => {
+    setOpen(true);
+  };
   const getProcesses = async () => {
     try {
       const response = await fetch("http://localhost:3000/processes");
@@ -56,7 +50,7 @@ const Processes: React.FC = () => {
       {/* <CreateProcess /> */}
       <Grid container gap={3} mt={4}>
         <Grid item>
-          <AddCard setOpen={setOpen} />
+          <AddCard HndleOpen={HndleOpen} />
         </Grid>
         {processes.map((p) => (
           <Grid item key={p.id}>
