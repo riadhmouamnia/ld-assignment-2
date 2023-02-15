@@ -16,7 +16,11 @@ export const draworElemnts = [
     icon: <Box component="img" src={LD} />,
     path: "#",
   },
-  { text: "Apps", icon: <Box component="img" src={Apps} />, path: "#" },
+  {
+    text: "Apps",
+    icon: <Box component="img" sx={{ width: "38px" }} src={Apps} />,
+    path: "#",
+  },
   { text: "Teams", icon: <Box component="img" src={Groups} />, path: "#" },
   { text: "Files", icon: <Box component="img" src={Files} />, path: "#" },
   { text: "Database", icon: <Box component="img" src={Database} />, path: "#" },

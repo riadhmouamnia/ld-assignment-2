@@ -9,8 +9,8 @@ export const StyledIcon = styled(Icon)({
   display: "flex",
   justifyContent: "center",
   alignItems: "center",
-  width: "48px",
-  height: "48px",
+  width: "38px",
+  height: "38px",
 });
 
 export const openedMixin = (theme: Theme): CSSObject => ({
@@ -37,12 +37,24 @@ export const closedMixin = (theme: Theme): CSSObject => ({
 export const DrawerHeader = styled("div")(({ theme }) => ({
   display: "flex",
   alignItems: "center",
+  marginTop: 10,
   justifyContent: "space-around",
   color: "white",
   padding: theme.spacing(0, 1),
   // necessary for content to be below app bar
-  ...theme.mixins.toolbar,
+  // ...theme.mixins.toolbar,
 }));
+export const DraweFooter = styled("div")(({ theme }) => ({
+  display: "flex",
+  alignItems: "center",
+  marginTop: 120,
+  justifyContent: "space-around",
+  color: "white",
+  padding: theme.spacing(0, 1),
+  // necessary for content to be below app bar
+  // ...theme.mixins.toolbar,
+}));
+
 export const Drawer = styled(MuiDrawer, {
   shouldForwardProp: (prop) => prop !== "open",
 })(({ theme, open }) => ({

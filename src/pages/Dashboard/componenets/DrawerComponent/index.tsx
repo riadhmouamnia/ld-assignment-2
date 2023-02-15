@@ -10,6 +10,8 @@ import { useAppDispatch } from "../../../../redux/hooks";
 import { logout } from "../../../../redux/features/auth/authSlice";
 import { cacheService } from "../../../../utils/cacheService";
 import DrawerHeaderComponent from "./components/DrawerHeaderComponent";
+import Logo from "../../../../assets/logo.svg";
+import DraweFooterComponent from "./components/DrawerFooterComponent";
 
 type Props = {
   open: boolean;
@@ -85,6 +87,7 @@ function SideDrawer({ open, setOpen }: Props) {
               )}
             </ListItem>
           ))}
+          <DraweFooterComponent />
         </List>
       </Drawer>
     </div>
