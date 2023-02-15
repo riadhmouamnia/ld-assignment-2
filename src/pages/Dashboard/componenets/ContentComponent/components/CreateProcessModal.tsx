@@ -1,6 +1,5 @@
-import React from "react";
 import { useNavigate } from "react-router";
-import Input from "../../../components/Input";
+import Input from "../../../../../components/Input";
 import Button from "@mui/material/Button";
 import Typography from "@mui/material/Typography";
 import Box from "@mui/material/Box";
@@ -8,6 +7,7 @@ import { Formik, Form as FormikForm } from "formik";
 import * as yup from "yup";
 import { IconButton, Modal } from "@mui/material";
 import CloseIcon from "@mui/icons-material/Close";
+import { style } from "../styles/ModelStyles";
 
 type InitialValues = {
   name: string;
@@ -17,19 +17,6 @@ type InitialValues = {
 type Props = {
   open: boolean;
   setOpen: (open: boolean) => void;
-};
-
-const style = {
-  position: "absolute" as "absolute",
-  top: "50%",
-  left: "50%",
-  transform: "translate(-50%, -50%)",
-  width: 603,
-  bgcolor: "#FFF",
-  outline: "none",
-  borderRadius: 2,
-  boxShadow: 24,
-  p: 4,
 };
 
 function CreateProcessModal({ open, setOpen }: Props) {
@@ -59,11 +46,7 @@ function CreateProcessModal({ open, setOpen }: Props) {
     >
       <Box color={"text.primary"} sx={style}>
         <Box>
-          <Box
-            display="flex"
-            justifyContent="space-between"
-            alignItems="center"
-          >
+          <Box sx={style.header}>
             <Typography variant="h6" fontWeight="bold">
               Create a new process
             </Typography>
@@ -75,8 +58,8 @@ function CreateProcessModal({ open, setOpen }: Props) {
             initialValues={{ name: "", color: "" }}
             onSubmit={onSubmit}
             validationSchema={yup.object({
-              name: yup.string().required(),
-              color: yup.string().required(),
+              name: yup.string(),
+              color: yup.string(),
             })}
           >
             {() => (
@@ -96,15 +79,11 @@ function CreateProcessModal({ open, setOpen }: Props) {
                   size="small"
                 />
 
-                <Box display="flex" gap={2} justifyContent="flex-end">
+                <Box sx={style.buttons}>
                   <Button
                     variant="outlined"
                     disableElevation
-                    sx={{
-                      mt: 3,
-                      mb: 2,
-                      ":hover": { backgroundColor: "#F93E6C", color: "white" },
-                    }}
+                    sx={style.buttons.cancle}
                     onClick={() => setOpen(false)}
                   >
                     Cancel
@@ -114,7 +93,7 @@ function CreateProcessModal({ open, setOpen }: Props) {
                     variant="contained"
                     color="secondary"
                     disableElevation
-                    sx={{ mt: 3, mb: 2 }}
+                    sx={style.buttons.create}
                   >
                     Create
                   </Button>

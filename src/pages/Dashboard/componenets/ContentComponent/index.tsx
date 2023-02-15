@@ -1,11 +1,11 @@
 import React, { useEffect, useState } from "react";
 import Typography from "@mui/material/Typography";
-import { useAppSelector } from "../../../redux/hooks";
+import { useAppSelector } from "../../../../redux/hooks";
 import Grid from "@mui/material/Grid";
-import Cards from "./Cards";
+import Cards from "./components/Cards";
 import { Box } from "@mui/material";
-import AddCard from "./AddCard";
-import CreateProcessModal from "./CreateProcessModal";
+import AddCard from "./components/AddCard";
+import CreateProcessModal from "./components/CreateProcessModal";
 
 interface ResponseData {
   id: number;
@@ -14,25 +14,12 @@ interface ResponseData {
   private?: boolean;
   // data: [];
 }
-const Processes: React.FC = () => {
+const ContentComponent: React.FC = ({ data }: any) => {
   const [open, setOpen] = React.useState<boolean>(false);
-  const [processes, setProcesses] = useState<ResponseData[]>([]);
   const { userInfo } = useAppSelector(({ auth }) => auth);
   const HndleOpen: React.MouseEventHandler<HTMLDivElement> = () => {
     setOpen(true);
   };
-  const getProcesses = async () => {
-    try {
-      const response = await fetch("http://localhost:3000/processes");
-      const processes = await response.json();
-      setProcesses(processes);
-    } catch (error) {
-      console.log(error);
-    }
-  };
-  useEffect(() => {
-    getProcesses();
-  }, []);
   return (
     <Box p={6}>
       <CreateProcessModal open={open} setOpen={setOpen} />
@@ -50,7 +37,7 @@ const Processes: React.FC = () => {
         <Grid item>
           <AddCard HndleOpen={HndleOpen} />
         </Grid>
-        {processes.map((p) => (
+        {data.map((p) => (
           <Grid item key={p.id}>
             <Cards process={p} />
           </Grid>
@@ -60,4 +47,4 @@ const Processes: React.FC = () => {
   );
 };
 
-export default Processes;
+export default ContentComponent;

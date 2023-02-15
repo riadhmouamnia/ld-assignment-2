@@ -4,8 +4,8 @@ import Box from "@mui/material/Box";
 import Typography from "@mui/material/Typography";
 import { styled } from "@mui/material/styles";
 import Icon from "@mui/material/Icon";
-import ProcessIcon from "../../../assets/ProcessIcon.svg";
-import PrivateIcon from "../../../assets/PrivateIcon.svg";
+import ProcessIcon from "../../../../../assets/ProcessIcon.svg";
+import PrivateIcon from "../../../../../assets/PrivateIcon.svg";
 import MoreVertIcon from "@mui/icons-material/MoreVert";
 
 interface Props {
@@ -16,7 +16,6 @@ interface Props {
 const StyledPaper = styled(Paper)(({ color }: Props) => ({
   display: "flex",
   flexDirection: "column",
-  // justifyContent: "center",
   gap: 8,
   alignItems: "center",
   width: "150px",
@@ -29,18 +28,28 @@ const StyledPaper = styled(Paper)(({ color }: Props) => ({
   },
 }));
 
+const StyledCardHeader = styled(Box)({
+  display: "flex",
+  alignItems: "center",
+  justifyContent: "space-between",
+  paddingTop: 16,
+  width: "80%",
+  height: "16px",
+});
+const StyledCardCOntent = styled(Box)({
+  display: "flex",
+  flexDirection: "column",
+  justifyContent: "center",
+  alignItems: "center",
+  width: "126px",
+  height: "64px",
+});
+
 const Cards: React.FC<Props> = ({ process }) => {
   return (
     <StyledPaper color={process.color}>
       {process.private ? (
-        <Box
-          display="flex"
-          alignItems="center"
-          justifyContent="space-between"
-          pt={2}
-          width="80%"
-          height="16px"
-        >
+        <StyledCardHeader>
           <Box
             component="img"
             src={PrivateIcon}
@@ -48,30 +57,16 @@ const Cards: React.FC<Props> = ({ process }) => {
             height="13.33px"
           />
           <MoreVertIcon fontSize="small" />
-        </Box>
+        </StyledCardHeader>
       ) : (
-        <Box
-          display="flex"
-          alignItems="center"
-          justifyContent="space-between"
-          pt={2}
-          width="80%"
-          height="16px"
-        />
+        <StyledCardHeader />
       )}
-      <Box
-        display="flex"
-        flexDirection="column"
-        justifyContent="center"
-        alignItems="center"
-        width="126px"
-        height="64px"
-      >
+      <StyledCardCOntent>
         <Icon>
           <Box component="img" src={ProcessIcon} width="100%" />
         </Icon>
         <Typography>{process.name}</Typography>
-      </Box>
+      </StyledCardCOntent>
     </StyledPaper>
   );
 };
