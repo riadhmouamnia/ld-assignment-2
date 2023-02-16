@@ -1,16 +1,16 @@
 import { useState, useEffect } from "react";
-import DrawerComponent from "./componenets/DrawerComponent";
-import AppBarComponent from "./componenets/AppBarComponent";
-import ContentComponent from "./componenets/ContentComponent";
-import DashBoardContainer from "./componenets/DashBoardContainer";
-import ProcessTable from "./componenets/ProcessTable";
-import useAxiosFetch from "../../hooks/useAxiosFetch";
+import DrawerComponent from "pages/Dashboard/components/DrawerComponent";
+import AppBarComponent from "pages/Dashboard/components/AppBarComponent";
+import ContentComponent from "pages/Dashboard/components/ContentComponent";
+import DashBoardContainer from "pages/Dashboard/components/DashBoardContainer";
+import ProcessTable from "pages/Dashboard/components/ProcessTable";
+import useAxiosFetch from "hooks/useAxiosFetch";
 
 const BASE_URL = "http://localhost:3000/processes";
 
 function Dashboard() {
   const [open, setOpen] = useState<boolean>(false);
-  // const { data } = useAxiosFetch(BASE_URL);
+  const { data } = useAxiosFetch(BASE_URL);
   return (
     <DashBoardContainer>
       <AppBarComponent open={open} />

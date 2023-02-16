@@ -2,7 +2,7 @@ import Container from "@mui/material/Container";
 import Typography from "@mui/material/Typography";
 import Button from "@mui/material/Button";
 import Box from "@mui/material/Box";
-import error from "../assets/error.svg";
+import error from "assets/error.svg";
 import { styled } from "@mui/material/styles";
 import { Link } from "react-router-dom";
 
