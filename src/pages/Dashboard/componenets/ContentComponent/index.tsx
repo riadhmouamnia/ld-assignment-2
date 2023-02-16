@@ -1,4 +1,4 @@
-import React, { useEffect, useState } from "react";
+import React, { useState } from "react";
 import Typography from "@mui/material/Typography";
 import { useAppSelector } from "../../../../redux/hooks";
 import Grid from "@mui/material/Grid";
@@ -6,18 +6,12 @@ import Cards from "./components/Cards";
 import { Box } from "@mui/material";
 import AddCard from "./components/AddCard";
 import CreateProcessModal from "./components/CreateProcessModal";
+import { DataProps } from "./contentTypes";
 
-interface ResponseData {
-  id: number;
-  processName: string;
-  color: string;
-  private?: boolean;
-  // data: [];
-}
-const ContentComponent: React.FC = ({ data }: any) => {
-  const [open, setOpen] = React.useState<boolean>(false);
+const ContentComponent = ({ data }: DataProps) => {
+  const [open, setOpen] = useState<boolean>(false);
   const { userInfo } = useAppSelector(({ auth }) => auth);
-  const HndleOpen: React.MouseEventHandler<HTMLDivElement> = () => {
+  const HndleOpen = () => {
     setOpen(true);
   };
   return (
@@ -37,7 +31,7 @@ const ContentComponent: React.FC = ({ data }: any) => {
         <Grid item>
           <AddCard HndleOpen={HndleOpen} />
         </Grid>
-        {data.map((p) => (
+        {data?.map((p) => (
           <Grid item key={p.id}>
             <Cards process={p} />
           </Grid>

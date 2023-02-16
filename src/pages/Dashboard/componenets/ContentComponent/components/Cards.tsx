@@ -7,13 +7,9 @@ import Icon from "@mui/material/Icon";
 import ProcessIcon from "../../../../../assets/ProcessIcon.svg";
 import PrivateIcon from "../../../../../assets/PrivateIcon.svg";
 import MoreVertIcon from "@mui/icons-material/MoreVert";
+import { CardProps } from "../contentTypes";
 
-interface Props {
-  process?: any;
-  children?: React.ReactNode;
-  color?: string;
-}
-const StyledPaper = styled(Paper)(({ color }: Props) => ({
+const StyledPaper = styled(Paper)(({ color }: CardProps) => ({
   display: "flex",
   flexDirection: "column",
   gap: 8,
@@ -45,7 +41,7 @@ const StyledCardCOntent = styled(Box)({
   height: "64px",
 });
 
-const Cards: React.FC<Props> = ({ process }) => {
+const Cards = ({ process }: CardProps) => {
   return (
     <StyledPaper color={process.color}>
       {process.private ? (

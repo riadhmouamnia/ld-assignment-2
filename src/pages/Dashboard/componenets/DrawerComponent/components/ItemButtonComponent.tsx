@@ -1,5 +1,4 @@
 import { ListItemButton, ListItemIcon, ListItemText } from "@mui/material";
-import React from "react";
 import { StyledIcon } from "../styles/drawerStyles";
 
 function ItemButtonComponent({ open, handleLogout, element }) {

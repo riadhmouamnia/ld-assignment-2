@@ -47,8 +47,8 @@ export const DrawerHeader = styled("div")(({ theme }) => ({
 export const DraweFooter = styled("div")(({ theme }) => ({
   display: "flex",
   alignItems: "center",
-  marginTop: 120,
-  justifyContent: "space-around",
+  marginTop: 140,
+  justifyContent: "center",
   color: "white",
   padding: theme.spacing(0, 1),
   // necessary for content to be below app bar

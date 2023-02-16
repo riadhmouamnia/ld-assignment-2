@@ -1,14 +1,18 @@
 import { Box } from "@mui/material";
-import React from "react";
-import AppBarComponent from "../AppBarComponent";
+import { Spacer, Wrapper } from "./styles/styles";
+import DataTable from "./components/DataTable";
+import { DataProps } from "../ContentComponent/contentTypes";
+import TableAppBar from "./components/TableAppBar";
+import TableHead from "./components/TableHead";
 
 function index() {
   return (
-    <>
-      <Box sx={{ height: "64px" }} p={20} />
-      <AppBarComponent />
-      <div>index</div>
-    </>
+    <Wrapper>
+      <Spacer />
+      <TableAppBar />
+      <TableHead />
+      <DataTable />
+    </Wrapper>
   );
 }
 

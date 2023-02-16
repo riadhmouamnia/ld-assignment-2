@@ -8,21 +8,15 @@ import * as yup from "yup";
 import { IconButton, Modal } from "@mui/material";
 import CloseIcon from "@mui/icons-material/Close";
 import { style } from "../styles/ModelStyles";
+import {
+  CreateProcessModalProps,
+  CreateProcessModalInitialValues,
+} from "../contentTypes";
 
-type InitialValues = {
-  name: string;
-  color: string;
-};
-
-type Props = {
-  open: boolean;
-  setOpen: (open: boolean) => void;
-};
-
-function CreateProcessModal({ open, setOpen }: Props) {
+function CreateProcessModal({ open, setOpen }: CreateProcessModalProps) {
   const navigate = useNavigate();
 
-  const onSubmit = async (values: InitialValues) => {
+  const onSubmit = async (values: CreateProcessModalInitialValues) => {
     try {
       const response = await fetch("http://localhost:3000/processes", {
         method: "POST",
