@@ -25,7 +25,6 @@ export const DialogContainer = {
   height: "600px",
   overflowY: "scroll",
   padding: "0px 16px",
-  // backgroundColor: "pink",
   flex: 4,
   "::-webkit-scrollbar": {
     width: "6px",

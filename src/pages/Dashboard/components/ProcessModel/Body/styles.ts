@@ -1,20 +1,16 @@
 export const container = {
   display: "flex",
   marginTop: "8px",
-  // justifyContent: "center",
-  // alignItems: "center",
   gap: 2,
 };
 
 export const dialogRightSide = {
   display: "flex",
+  height: "600px",
+  overFlowY: "hidden",
   flex: "4",
   flexDirection: "column",
-
-  backgroundColor: "green",
-  justifyContent: "center",
-  alignItems: "center",
-  gap: 2,
+  gap: 1,
 };
 
 export const TabStyles = {
