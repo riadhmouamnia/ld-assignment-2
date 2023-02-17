@@ -7,12 +7,20 @@ import DownArrow from "assets/DownArrow.svg";
 type Props = {
   title?: string;
   icon?: string;
+  subTitle?: string;
   style?: any;
   iconStyle?: any;
   index: number;
 };
 
-function TableAppBarButton({ style, iconStyle, icon, title, index }: Props) {
+function TableAppBarButton({
+  style,
+  iconStyle,
+  icon,
+  title,
+  subTitle,
+  index,
+}: Props) {
   return (
     <React.Fragment key={index}>
       <Button
@@ -28,6 +36,9 @@ function TableAppBarButton({ style, iconStyle, icon, title, index }: Props) {
           ) : null
         }
       >
+        {subTitle ? (
+          <Box sx={appBarStyles.phasesButton.innerText}>{subTitle}</Box>
+        ) : null}
         {title}
       </Button>
       {index <= 1 && <Box component="img" src={Divider} />}

@@ -3,17 +3,16 @@ import {
   AppBar,
   appBarStyles,
 } from "pages/Dashboard/components/ProcessTable/styles/styles";
-import AddCircle from "assets/AddCircle.svg";
 import Icon from "@mui/material/Icon";
 import TableAppBarButton from "pages/Dashboard/components/ProcessTable/TableAppBarButton";
 import { items, iconList } from "utils/TableAppBarItems";
+import { TbCirclePlus } from "react-icons/tb";
 
 type Props = {
-  open: boolean;
-  setOpen: (open: boolean) => void;
+  setIsInfoPanel: (isInfoPanelOpen: boolean) => void;
 };
 
-function TableAppBar({ setOpen, open }: Props) {
+function TableAppBar({ setIsInfoPanel }: Props) {
   return (
     <AppBar>
       <Box sx={appBarStyles.leftContainer}>
@@ -33,16 +32,8 @@ function TableAppBar({ setOpen, open }: Props) {
         ))}
         <Button
           sx={appBarStyles.addButton}
-          startIcon={
-            <Icon>
-              <Box
-                component="img"
-                src={AddCircle}
-                sx={appBarStyles.iconWrapper}
-              />
-            </Icon>
-          }
-          onClick={() => setOpen(true)}
+          startIcon={<TbCirclePlus />}
+          onClick={() => setIsInfoPanel(true)}
         >
           Add
         </Button>

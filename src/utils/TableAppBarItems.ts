@@ -1,7 +1,5 @@
 import Views from "assets/Views.svg";
-import Divider from "assets/Divider.svg";
 import Tables from "assets/Tables.svg";
-import DownArrow from "assets/DownArrow.svg";
 import Column from "assets/Column.svg";
 import Filter from "assets/Filter.svg";
 import Phases from "assets/Phases.svg";
@@ -17,6 +15,7 @@ import { appBarStyles } from "pages/Dashboard/components/ProcessTable/styles/sty
 
 type ItemProps = {
   title?: string;
+  subTitle?: string;
   icon?: string;
   style?: any;
   iconStyle?: any;
@@ -47,6 +46,7 @@ export const items: ItemProps[] = [
   },
   {
     title: "Phases",
+    subTitle: "Grouped in: ",
     icon: Phases,
     style: appBarStyles.phasesButton,
   },

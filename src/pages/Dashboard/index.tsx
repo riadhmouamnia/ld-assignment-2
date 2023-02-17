@@ -1,4 +1,4 @@
-import { useState, useEffect } from "react";
+import { useState } from "react";
 import DrawerComponent from "pages/Dashboard/components/DrawerComponent";
 import AppBarComponent from "pages/Dashboard/components/AppBarComponent";
 import ContentComponent from "pages/Dashboard/components/ContentComponent";

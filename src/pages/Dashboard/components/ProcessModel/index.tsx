@@ -2,13 +2,20 @@ import { Box, Modal } from "@mui/material";
 import Header from "pages/Dashboard/components/ProcessModel/Header";
 import Body from "pages/Dashboard/components/ProcessModel/Body";
 import { modelStyles } from "./styles";
+import Footer from "pages/Dashboard/components/ProcessModel/Footer";
 
-function ProcessModel() {
+type ModalProps = {
+  isProcessModelOpen: boolean;
+  setIsProcessModel: (isProcessModelOpen: boolean) => void;
+};
+
+function ProcessModel({ isProcessModelOpen, setIsProcessModel }: ModalProps) {
   return (
-    <Modal open={false}>
+    <Modal open={isProcessModelOpen}>
       <Box sx={modelStyles}>
-        <Header />
+        <Header setIsProcessModel={setIsProcessModel} />
         <Body />
+        <Footer setIsProcessModel={setIsProcessModel} />
       </Box>
     </Modal>
   );

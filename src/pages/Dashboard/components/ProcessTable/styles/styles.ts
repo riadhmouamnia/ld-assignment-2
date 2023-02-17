@@ -24,6 +24,9 @@ export const styles = {
     fontWeight: "400",
     fontSize: "14px",
   },
+  tdClick: {
+    cursor: "pointer",
+  },
   tdAvatar: {
     display: "flex",
   },
@@ -176,6 +179,9 @@ export const drawerStyles = {
     display: "flex",
     justifyContent: "center",
     alignItems: "center",
+  },
+  greyFont: {
+    color: "#9897A1",
   },
   text: {
     fontSize: "16px",

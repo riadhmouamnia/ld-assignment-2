@@ -1,14 +1,4 @@
 export const dialogLeftSide = {
-  wrapper: {
-    height: "600px",
-    overflow: "scroll",
-    backgroundColor: "pink",
-    flex: 4,
-  },
-  flex: "4",
-  flexDirection: "column",
-  backgroundColor: "pink",
-  gap: 2,
   head: {
     display: "flex",
     width: "100%",
@@ -77,6 +67,7 @@ export const dialogLeftSide = {
   },
   labelThree: {
     backgroundColor: "#FF9F47",
+    marginRight: "8px",
     "&:hover": {
       backgroundColor: "#FF9F4770",
     },
@@ -94,15 +85,15 @@ export const dialogLeftSide = {
     },
   },
   hrDevider: {
-    margingTop: "8px",
+    marginTop: "20px",
     width: "100%",
   },
   vrDevider: {
-    marginTop: "8px",
-    height: "160%",
+    // marginTop: "8px",
+    // height: "160%",
   },
   formHeading: {
-    marginTop: "16px",
+    margin: "20px auto",
     fontSize: "16px",
     fontWeight: "600",
     color: "#464356",
@@ -125,6 +116,7 @@ export const dialogLeftSide = {
   fileContainer: {
     display: "flex",
     flexDirection: "column",
-    gap: 1,
+    alignItems: "center",
+    gap: 2,
   },
 };

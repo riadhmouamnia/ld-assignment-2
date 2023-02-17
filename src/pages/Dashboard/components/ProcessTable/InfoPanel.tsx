@@ -7,13 +7,12 @@ import {
   Typography,
 } from "@mui/material";
 import Drawer from "@mui/material/Drawer";
-import { appBarStyles, drawerStyles } from "./styles/styles";
+import { drawerStyles } from "./styles/styles";
 import MenuItem from "@mui/material/MenuItem";
 import ShoppingBag from "assets/ShoppingBag.svg";
 import ArrowDownSetting from "assets/ArrowDownSetting.svg";
 import ArrowUpSetting from "assets/ArrowUpSetting.svg";
-import LeftArrow from "assets/LeftArrow.svg";
-import RightArrow from "assets/RightArrow.svg";
+import { HiChevronRight, HiChevronLeft } from "react-icons/hi";
 import Icon from "@mui/material/Icon";
 import { useState } from "react";
 
@@ -26,14 +25,14 @@ const contractTypes = [
   { value: "Weekly", label: "w" },
 ];
 
-type settingsItemProps = {
+type InfoPanelProps = {
   label: string;
   name?: string;
   options?: any;
   select?: boolean;
 };
 
-const settingMainInputs: settingsItemProps[] = [
+const settingMainInputs: InfoPanelProps[] = [
   { label: "Contact numbers", name: "contactNumbers" },
   { label: "Customer number", name: "customerNumber" },
   { label: "Email", name: "email" },
@@ -41,24 +40,29 @@ const settingMainInputs: settingsItemProps[] = [
   { label: "Phone provider", name: "phoneProvider" },
 ];
 
-const settingsFooterInputs: settingsItemProps[] = [
+const settingsFooterInputs: InfoPanelProps[] = [
   { label: "Email", name: "email" },
   { label: "Contract type", options: contractTypes, select: true },
   { label: "Discount", name: "discount" },
 ];
 
 type Props = {
-  open: boolean;
-  setOpen: (open: boolean) => void;
+  isInfoPanelOpen: boolean;
+  setIsInfoPanel: (open: boolean) => void;
 };
 
-function SettingDrawer({ open, setOpen }: Props) {
+function InfoPanel({ isInfoPanelOpen, setIsInfoPanel }: Props) {
   const [openCollapse, setOpenCollapse] = useState(true);
   const handleCollapse = () => {
     setOpenCollapse(!openCollapse);
   };
   return (
-    <Drawer variant={"persistent"} sx={drawerStyles} anchor="right" open={open}>
+    <Drawer
+      variant={"persistent"}
+      sx={drawerStyles}
+      anchor="right"
+      open={isInfoPanelOpen}
+    >
       <Box>
         {settingMainInputs.map((settingItem, index) => (
           <TextField
@@ -120,23 +124,18 @@ function SettingDrawer({ open, setOpen }: Props) {
         </Collapse>
         <Box sx={drawerStyles.footer}>
           <Box sx={drawerStyles.container}>
-            <IconButton sx={appBarStyles.iconWrapper} aria-label="settings">
-              <Icon sx={drawerStyles.iconText}>
-                <Box component="img" src={LeftArrow} />
-              </Icon>
+            <IconButton sx={drawerStyles.greyFont}>
+              <HiChevronLeft />
             </IconButton>
-            <IconButton sx={appBarStyles.iconWrapper} aria-label="settings">
-              <Icon sx={drawerStyles.iconText}>
-                <Box component="img" src={RightArrow} />
-              </Icon>
+            <IconButton sx={drawerStyles.greyFont}>
+              <HiChevronRight />
             </IconButton>
           </Box>
           <Box sx={drawerStyles.container}>
             <Button
               variant="outlined"
               sx={drawerStyles.cancel}
-              disableElevation
-              onClick={() => setOpen(false)}
+              onClick={() => setIsInfoPanel(false)}
             >
               Annula
             </Button>
@@ -155,4 +154,4 @@ function SettingDrawer({ open, setOpen }: Props) {
   );
 }
 
-export default SettingDrawer;
+export default InfoPanel;

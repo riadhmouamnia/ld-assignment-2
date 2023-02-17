@@ -3,19 +3,26 @@ import { useState } from "react";
 import DataTable from "pages/Dashboard/components/ProcessTable/DataTable";
 import TableAppBar from "pages/Dashboard/components/ProcessTable/TableAppBar";
 import TableHead from "pages/Dashboard/components/ProcessTable/TableHead";
-import SettingDrawer from "pages/Dashboard/components/ProcessTable/SettingDrawer";
+import InfoPanel from "pages/Dashboard/components/ProcessTable/InfoPanel";
 import ProcessModel from "pages/Dashboard/components/ProcessModel";
 
 function index() {
-  const [open, setOpen] = useState(false);
+  const [isInfoPanelOpen, setIsInfoPanel] = useState(false);
+  const [isProcessModelOpen, setIsProcessModel] = useState(false);
   return (
     <Wrapper>
       <Spacer />
-      <TableAppBar open={open} setOpen={setOpen} />
-      <SettingDrawer open={open} setOpen={setOpen} />
+      <TableAppBar setIsInfoPanel={setIsInfoPanel} />
+      <InfoPanel
+        isInfoPanelOpen={isInfoPanelOpen}
+        setIsInfoPanel={setIsInfoPanel}
+      />
       <TableHead />
-      <DataTable />
-      <ProcessModel />
+      <DataTable setIsProcessModel={setIsProcessModel} />
+      <ProcessModel
+        isProcessModelOpen={isProcessModelOpen}
+        setIsProcessModel={setIsProcessModel}
+      />
     </Wrapper>
   );
 }

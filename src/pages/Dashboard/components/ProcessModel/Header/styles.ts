@@ -20,16 +20,6 @@ export const headerContainer = {
     fontWeight: "700",
     color: "#464356",
   },
-  iconWrapper: {
-    display: "flex",
-    alignItems: "center",
-    justifyContent: "center",
-    gap: "8px",
-    cursor: "pointer",
-  },
-  colseIcon: {
-    color: "#9897A1",
-  },
   KOMotivation: {
     display: "flex",
     alignItems: "center",

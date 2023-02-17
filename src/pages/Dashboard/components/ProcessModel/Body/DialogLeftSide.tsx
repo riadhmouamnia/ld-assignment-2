@@ -3,25 +3,30 @@ import {
   Box,
   Button,
   FormControlLabel,
-  Icon,
   IconButton,
   Radio,
   RadioGroup,
   Typography,
 } from "@mui/material";
 import stringAvatar from "pages/Dashboard/components/AppBarComponent/stringAvatar";
-import AddNewButton from "assets/AddNewButton.svg";
-import DownArrow from "assets/DownArrow.svg";
-import PhaseArrows from "assets/PhaseArrows.svg";
-import Date from "assets/Date.svg";
-import Vendor from "assets/Vendor.svg";
-import Divider from "assets/Divider.svg";
-import DataStorage from "assets/DataStorage.svg";
 import HrDivider from "assets/HrDivider.svg";
-import Document from "assets/Document.svg";
-import VerticalDivider from "assets/VerticalDivider.svg";
 import { dialogLeftSide } from "./DialogLeftSideStyles";
 import TextField from "@mui/material/TextField/TextField";
+import { TbCirclePlus } from "react-icons/tb";
+import {
+  colors,
+  DialogContainer,
+} from "pages/Dashboard/components/ProcessModel/styles";
+import {
+  ChevronDownSmall,
+  DateIcon,
+  PersonIcon,
+  TwoArrowsRight,
+  DataStorage,
+  Divider,
+  DocumentIcon,
+  VrDevider,
+} from "components/icons";
 
 const avatarNames = [
   { id: 1, name: "P L" },
@@ -31,53 +36,41 @@ const avatarNames = [
   { id: 5, name: "S T" },
 ];
 
+const Genders = [
+  { value: "male", label: "Male" },
+  { value: "female", label: "Female" },
+  { value: "notDeprecated", label: "Not Deprecated" },
+];
+
 function DialogLeftSide() {
   return (
-    <Box sx={dialogLeftSide.wrapper}>
+    <Box sx={DialogContainer}>
       <Box sx={dialogLeftSide.head}>
         <Box sx={dialogLeftSide.flexContainer}>
           {avatarNames.map((n) => (
-            <Box key={n.id}>
-              <Avatar
-                {...stringAvatar(`${n.name}`)}
-                sx={dialogLeftSide.avatar}
-              />
-            </Box>
+            <Avatar
+              key={n.id}
+              {...stringAvatar(`${n.name}`)}
+              sx={dialogLeftSide.avatar}
+            />
           ))}
           <Typography sx={dialogLeftSide.plusText}>+5</Typography>
-          <IconButton sx={dialogLeftSide.iconWrapper}>
-            <Icon>
-              <Box component="img" src={AddNewButton} />
-            </Icon>
+          <IconButton sx={colors.primary}>
+            <TbCirclePlus />
           </IconButton>
         </Box>
         <Box sx={dialogLeftSide.flexContainer}>
-          <Icon sx={dialogLeftSide.iconWrapper}>
-            <Box component="img" src={PhaseArrows} />
-          </Icon>
+          <TwoArrowsRight />
           <Button
             sx={dialogLeftSide.greyTextButton}
-            endIcon={
-              <Icon sx={dialogLeftSide.iconWrapper}>
-                <Box component="img" src={DownArrow} />
-              </Icon>
-            }
+            endIcon={<ChevronDownSmall />}
           >
             Chapter One
           </Button>
         </Box>
-        <Box sx={dialogLeftSide.flexContainer}>
-          <Button
-            sx={dialogLeftSide.greyTextButton}
-            startIcon={
-              <Icon sx={dialogLeftSide.iconWrapper}>
-                <Box component="img" src={Date} />
-              </Icon>
-            }
-          >
-            05/10/2021 - 17:50
-          </Button>
-        </Box>
+        <Button sx={dialogLeftSide.greyTextButton} startIcon={<DateIcon />}>
+          05/10/2021 - 17:50
+        </Button>
       </Box>
       <Box sx={dialogLeftSide.flexContainer}>
         <Button sx={{ ...dialogLeftSide.label, ...dialogLeftSide.labelOne }}>
@@ -89,48 +82,24 @@ function DialogLeftSide() {
         <Button sx={{ ...dialogLeftSide.label, ...dialogLeftSide.labelThree }}>
           label 3
         </Button>
-        <IconButton sx={dialogLeftSide.iconWrapper}>
-          <Icon>
-            <Box component="img" src={AddNewButton} />
-          </Icon>
+        <IconButton sx={colors.primary}>
+          <TbCirclePlus />
         </IconButton>
       </Box>
       <Box sx={dialogLeftSide.flexContainer}>
         <Button
           sx={dialogLeftSide.greyTextButton}
-          startIcon={
-            <Icon sx={dialogLeftSide.iconWrapper}>
-              <Box component="img" src={Vendor} />
-            </Icon>
-          }
-          endIcon={
-            <Icon sx={dialogLeftSide.iconWrapper}>
-              <Box component="img" src={DownArrow} />
-            </Icon>
-          }
+          startIcon={<PersonIcon />}
+          endIcon={<ChevronDownSmall />}
         >
           Select vendors
         </Button>
-        <Box component="img" src={Divider} sx={dialogLeftSide.dividerSpace} />
+        <Divider />
         <Box sx={dialogLeftSide.flexContainer}>
-          <Button
-            sx={dialogLeftSide.labelGrey}
-            startIcon={
-              <Icon sx={dialogLeftSide.iconWrapper}>
-                <Box component="img" src={DataStorage} />
-              </Icon>
-            }
-          >
+          <Button sx={dialogLeftSide.labelGrey} startIcon={<DataStorage />}>
             #database_object_1
           </Button>
-          <Button
-            sx={dialogLeftSide.labelGrey}
-            startIcon={
-              <Icon sx={dialogLeftSide.iconWrapper}>
-                <Box component="img" src={DataStorage} />
-              </Icon>
-            }
-          >
+          <Button sx={dialogLeftSide.labelGrey} startIcon={<DataStorage />}>
             #db_object1
           </Button>
         </Box>
@@ -157,12 +126,8 @@ function DialogLeftSide() {
         <Typography sx={dialogLeftSide.formHeading}>Company data</Typography>
         <Box sx={dialogLeftSide.companyData}>
           <Box sx={dialogLeftSide.fileContainer}>
-            <Icon>
-              <Box component="img" src={Document} />
-            </Icon>
-            <Icon sx={dialogLeftSide.vrDevider}>
-              <Box component="img" src={VerticalDivider} />
-            </Icon>
+            <DocumentIcon />
+            <VrDevider />
           </Box>
           <Box sx={dialogLeftSide.companyDataForm}>
             <TextField
@@ -193,18 +158,16 @@ function DialogLeftSide() {
             </RadioGroup>
           </Box>
         </Box>
-        <Typography sx={dialogLeftSide.formHeading}>Company data</Typography>
-        <RadioGroup name="use-radio-group" defaultValue="company">
-          <FormControlLabel
-            value="company"
-            control={<Radio sx={dialogLeftSide.radioButtons} />}
-            label="Company"
-          />
-          <FormControlLabel
-            value="person"
-            control={<Radio sx={dialogLeftSide.radioButtons} />}
-            label="Person"
-          />
+        <Typography sx={dialogLeftSide.formHeading}>Gender</Typography>
+        <RadioGroup name="use-radio-group" defaultValue="female">
+          {Genders.map((gender, index) => (
+            <FormControlLabel
+              key={index}
+              value={gender.value}
+              control={<Radio sx={dialogLeftSide.radioButtons} />}
+              label={gender.label}
+            />
+          ))}
         </RadioGroup>
       </Box>
     </Box>
