@@ -33,6 +33,10 @@ const TabsIcons = [
     selected: <SmallLink fill={colors.primary.color} />,
     notSelcted: <SmallLink fill={colors.secondary.color} />,
   },
+  {
+    selected: <List fill={colors.primary.color} />,
+    notSelcted: <List fill={colors.secondary.color} />,
+  },
 ];
 
 function TabsComponent() {
