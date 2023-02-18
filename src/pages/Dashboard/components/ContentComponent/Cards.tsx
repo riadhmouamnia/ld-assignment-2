@@ -43,7 +43,7 @@ const StyledCardCOntent = styled(Box)({
 
 const Cards = ({ process }: CardProps) => {
   return (
-    <StyledPaper color={process.color}>
+    <StyledPaper elevation={0} color={process.color}>
       {process.private ? (
         <StyledCardHeader>
           <Box

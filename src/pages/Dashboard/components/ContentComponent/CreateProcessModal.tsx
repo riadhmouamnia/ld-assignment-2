@@ -5,16 +5,23 @@ import Typography from "@mui/material/Typography";
 import Box from "@mui/material/Box";
 import { Formik, Form as FormikForm } from "formik";
 import * as yup from "yup";
-import { IconButton, Modal } from "@mui/material";
+import { IconButton, InputAdornment, Modal } from "@mui/material";
 import CloseIcon from "@mui/icons-material/Close";
 import { style } from "./styles/ModelStyles";
 import {
   CreateProcessModalProps,
   CreateProcessModalInitialValues,
 } from "./contentTypes";
+import { Circle, ColorPalette } from "components/icons";
+import { useState } from "react";
 
 function CreateProcessModal({ open, setOpen }: CreateProcessModalProps) {
   const navigate = useNavigate();
+  const [color, setColor] = useState("#FF2200");
+
+  const handleChange = (e: any) => {
+    setColor(e.target.value);
+  };
 
   const onSubmit = async (values: CreateProcessModalInitialValues) => {
     try {
@@ -65,7 +72,21 @@ function CreateProcessModal({ open, setOpen }: CreateProcessModalProps) {
                   fullWidth
                   name="color"
                   label="Color"
+                  value={color}
+                  onChange={handleChange}
                   size="small"
+                  InputProps={{
+                    startAdornment: (
+                      <InputAdornment position="start">
+                        <Circle fill={color} />
+                      </InputAdornment>
+                    ),
+                    endAdornment: (
+                      <InputAdornment position="start">
+                        <ColorPalette />
+                      </InputAdornment>
+                    ),
+                  }}
                 />
 
                 <Box sx={style.buttons}>

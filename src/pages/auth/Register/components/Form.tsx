@@ -112,7 +112,7 @@ function Form({ onNextStep }: Props) {
           </FormikForm>
         )}
       </Formik>
-      <Box width="100%" mt={2} display="flex" gap={1}>
+      <Box width="100%" mt={1} display="flex" gap={1}>
         <Typography>Do you have an account?</Typography>
         <Link to="/login" style={{ textDecoration: "none" }}>
           <Typography
