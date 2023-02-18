@@ -19,6 +19,13 @@ const StyledPaper = styled(Box)({
   },
 });
 
+const Container = styled(Box)({
+  display: "flex",
+  flexDirection: "column",
+  justifyContent: "center",
+  alignItems: "center",
+});
+
 type Props = {
   HndleOpen: React.MouseEventHandler<HTMLDivElement> | undefined;
 };
@@ -26,17 +33,12 @@ type Props = {
 function AddCard({ HndleOpen }: Props) {
   return (
     <StyledPaper onClick={HndleOpen}>
-      <Box
-        display="flex"
-        flexDirection="column"
-        justifyContent="center"
-        alignItems="center"
-      >
-        <AddIcon sx={{ fontSize: "40px" }} />
+      <Container>
+        <AddIcon fontSize="large" />
         <Typography variant="h6" color="text.secondary" textAlign="center">
           Create new Process
         </Typography>
-      </Box>
+      </Container>
     </StyledPaper>
   );
 }

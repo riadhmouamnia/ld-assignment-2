@@ -1,9 +1,8 @@
-import React from "react";
 import Container from "@mui/material/Container";
 import Typography from "@mui/material/Typography";
 import Button from "@mui/material/Button";
 import Box from "@mui/material/Box";
-import error from "../assets/error.svg";
+import error from "assets/error.svg";
 import { styled } from "@mui/material/styles";
 import { Link } from "react-router-dom";
 
@@ -18,20 +17,20 @@ const StyledLink = styled(Link)({
   textDecoration: "none",
 });
 
+const ContentWrapper = styled(Box)({
+  width: 650,
+  display: "flex",
+  flexDirection: "column",
+  justifyContent: "center",
+  alignItems: "center",
+  height: "100vh",
+  gap: 4,
+});
+
 function ErrorPage() {
   return (
     <StyledContainer>
-      <Box
-        width={650}
-        sx={{
-          display: "flex",
-          flexDirection: "column",
-          justifyContent: "center",
-          alignItems: "center",
-          height: "100vh",
-          gap: 4,
-        }}
-      >
+      <ContentWrapper>
         <Box>
           <img src={error} alt="not found" />
         </Box>
@@ -54,7 +53,7 @@ function ErrorPage() {
             Go back
           </Button>
         </StyledLink>
-      </Box>
+      </ContentWrapper>
     </StyledContainer>
   );
 }
