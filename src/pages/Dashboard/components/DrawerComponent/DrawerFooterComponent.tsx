@@ -1,17 +1,15 @@
 import { Box, IconButton, Typography } from "@mui/material";
+import { Logo } from "components/icons";
 import { DraweFooter } from "pages/Dashboard/components/DrawerComponent/styles/drawerStyles";
-import Logo from "assets/logo.svg";
+import { useNavigate } from "react-router-dom";
 
 function DraweFooterComponent() {
+  const navigate = useNavigate();
   return (
     <>
       <DraweFooter>
-        <IconButton>
-          <Box
-            component="img"
-            src={Logo}
-            sx={{ width: "21.68", height: "22.16px" }}
-          />
+        <IconButton onClick={() => navigate("/")}>
+          <Logo />
         </IconButton>
       </DraweFooter>
     </>

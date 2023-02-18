@@ -66,11 +66,3 @@ export const items: ItemProps[] = [
     style: appBarStyles.filterButton,
   },
 ];
-
-export const iconList = [
-  ShoppingBag,
-  Research,
-  FileImport,
-  FileExport,
-  Setting,
-];

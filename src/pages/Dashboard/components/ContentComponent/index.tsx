@@ -8,6 +8,7 @@ import AddCard from "./AddCard";
 import CreateProcessModal from "./CreateProcessModal";
 import { DataProps } from "./contentTypes";
 import { Spacer } from "../ProcessTable/styles/styles";
+import { useNavigate } from "react-router-dom";
 
 const ContentComponent = ({ data }: DataProps) => {
   const [open, setOpen] = useState<boolean>(false);
@@ -15,6 +16,7 @@ const ContentComponent = ({ data }: DataProps) => {
   const HndleOpen = () => {
     setOpen(true);
   };
+  const navigate = useNavigate();
   return (
     <Box p={6}>
       <CreateProcessModal open={open} setOpen={setOpen} />
@@ -33,7 +35,7 @@ const ContentComponent = ({ data }: DataProps) => {
           <AddCard HndleOpen={HndleOpen} />
         </Grid>
         {data?.map((p) => (
-          <Grid item key={p.id}>
+          <Grid item key={p.id} onClick={() => navigate(`/${p.id}`)}>
             <Cards process={p} />
           </Grid>
         ))}

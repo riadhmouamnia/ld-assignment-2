@@ -11,16 +11,15 @@ import RequireAuth from "./components/RequireAuth";
 function App() {
   return (
     <Routes>
+      {/* Public Routes */}
+      <Route path="login" element={<Login />} />
+      <Route path="register" element={<Register />} />
+      <Route path="reset" element={<Reset />} />
+      {/* Private Route */}
       <Route path="/" element={<Layout />}>
-        {/* Public Routes */}
-        <Route path="login" element={<Login />} />
-        <Route path="register" element={<Register />} />
-        <Route path="reset" element={<Reset />} />
-
-        {/* Private Route */}
         <Route element={<RequireAuth />}>
           <Route path="/" element={<Dashboard />} />
-          {/* <Route path="/:id" element={<ProcessTable />} /> */}
+          <Route path=":id" element={<ProcessTable />} />
         </Route>
 
         {/* Catch All */}

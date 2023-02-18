@@ -109,9 +109,9 @@ export const StyledInputBase = styled(InputBase)(({ theme }) => ({
   },
 }));
 
-export const TableStyles = {
+export const TabStyles = {
   container: {
-    backgroundColor: "skyblue",
+    // backgroundColor: "skyblue",
     width: "100%",
     height: "100%",
   },
