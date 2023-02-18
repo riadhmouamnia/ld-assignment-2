@@ -5,6 +5,7 @@ import ContentComponent from "pages/Dashboard/components/ContentComponent";
 import DashBoardContainer from "pages/Dashboard/components/DashBoardContainer";
 import ProcessTable from "pages/Dashboard/components/ProcessTable";
 import useAxiosFetch from "hooks/useAxiosFetch";
+import MembersModal from "pages/Dashboard/components/MembersModal";
 
 const BASE_URL = "http://localhost:3000/processes";
 
@@ -15,7 +16,8 @@ function Dashboard() {
     <DashBoardContainer>
       <AppBarComponent open={open} />
       <DrawerComponent open={open} setOpen={setOpen} />
-      <ProcessTable />
+      {/* <ProcessTable /> */}
+      <MembersModal />
       {/* <ContentComponent data={data} /> */}
     </DashBoardContainer>
   );

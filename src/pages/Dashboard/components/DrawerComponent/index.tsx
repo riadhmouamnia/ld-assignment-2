@@ -10,7 +10,6 @@ import { useAppDispatch } from "../../../../redux/hooks";
 import { logout } from "../../../../redux/features/auth/authSlice";
 import { cacheService } from "../../../../utils/cacheService";
 import DrawerHeaderComponent from "./DrawerHeaderComponent";
-import Logo from "../../../../assets/logo.svg";
 import DraweFooterComponent from "./DrawerFooterComponent";
 
 type Props = {
