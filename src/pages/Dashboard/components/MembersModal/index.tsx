@@ -14,7 +14,7 @@ type Props = {
 function MembersModal({ setIsMembersModal, isMembersModalOpen }: Props) {
   const [value, setValue] = useState(8);
   return (
-    <Modal open={isMembersModalOpen}>
+    <Modal open={isMembersModalOpen} onClose={() => setIsMembersModal(false)}>
       <Box sx={modalStyles}>
         <Header setIsMembersModal={setIsMembersModal} />
         <Grid container spacing={2} height="90%">

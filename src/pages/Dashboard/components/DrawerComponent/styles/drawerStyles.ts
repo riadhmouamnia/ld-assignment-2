@@ -41,9 +41,8 @@ export const DrawerHeader = styled("div")(({ theme }) => ({
   justifyContent: "space-around",
   color: "white",
   padding: theme.spacing(0, 1),
-  // necessary for content to be below app bar
-  // ...theme.mixins.toolbar,
 }));
+
 export const DraweFooter = styled("div")(({ theme }) => ({
   display: "flex",
   alignItems: "center",
@@ -51,8 +50,6 @@ export const DraweFooter = styled("div")(({ theme }) => ({
   justifyContent: "center",
   color: "white",
   padding: theme.spacing(0, 1),
-  // necessary for content to be below app bar
-  // ...theme.mixins.toolbar,
 }));
 
 export const Drawer = styled(MuiDrawer, {

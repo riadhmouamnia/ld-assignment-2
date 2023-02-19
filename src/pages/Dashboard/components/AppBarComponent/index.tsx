@@ -1,4 +1,10 @@
-import { Box, Toolbar, Typography } from "@mui/material";
+import {
+  Box,
+  Breadcrumbs,
+  Toolbar,
+  Typography,
+  Link as MUILink,
+} from "@mui/material";
 import { AppBar, AppBarProps, pathStyles } from "./styles/AppBarStyles";
 import stringAvatar from "./stringAvatar";
 import Events from "../../../../assets/Events.svg";
@@ -6,7 +12,7 @@ import Bell from "../../../../assets/Bell.svg";
 import Avatar from "@mui/material/Avatar";
 
 import { useAppSelector } from "../../../../redux/hooks";
-import { useParams } from "react-router-dom";
+import { Link, useParams } from "react-router-dom";
 import { ChevronRight } from "components/icons";
 
 function AppBarComponent({ open }: AppBarProps) {
@@ -21,10 +27,10 @@ function AppBarComponent({ open }: AppBarProps) {
           alignItems="center"
           justifyContent="space-between"
         >
-          {id ? (
+          {/* {id ? (
             <Box sx={pathStyles}>
               <Typography variant="h6" sx={pathStyles.greyText}>
-                Process
+                
               </Typography>
               <ChevronRight />
               <Typography variant="h6" sx={pathStyles.primaryText}>
@@ -35,7 +41,26 @@ function AppBarComponent({ open }: AppBarProps) {
             <Typography variant="h6" sx={pathStyles.primaryText}>
               Process
             </Typography>
-          )}
+          )} */}
+
+          <Breadcrumbs
+            separator={<ChevronRight fontSize="small" />}
+            aria-label="breadcrumb"
+          >
+            <MUILink component={Link} underline="none" color="inherit" to="/">
+              <Typography
+                variant="h6"
+                sx={id ? pathStyles.greyText : pathStyles.primaryText}
+              >
+                Process
+              </Typography>
+            </MUILink>
+            {id && (
+              <Typography variant="h6" sx={pathStyles.primaryText}>
+                Process {id}
+              </Typography>
+            )}
+          </Breadcrumbs>
 
           <Box display="flex" alignItems="center" gap={2}>
             <Box component="img" src={Bell} width="20px" height="20px" />
