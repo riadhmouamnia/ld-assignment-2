@@ -35,7 +35,16 @@ const ContentComponent = ({ data }: DataProps) => {
           <AddCard HndleOpen={HndleOpen} />
         </Grid>
         {data?.map((p) => (
-          <Grid item key={p.id} onClick={() => navigate(`/${p.id}`)}>
+          <Grid
+            item
+            key={p.id}
+            onClick={() => {
+              if (p.private) {
+                return;
+              }
+              navigate(`/${p.id}`);
+            }}
+          >
             <Cards process={p} />
           </Grid>
         ))}

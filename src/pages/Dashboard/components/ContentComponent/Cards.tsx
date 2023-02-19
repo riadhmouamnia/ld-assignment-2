@@ -9,7 +9,9 @@ import PrivateIcon from "assets/PrivateIcon.svg";
 import MoreVertIcon from "@mui/icons-material/MoreVert";
 import { CardProps } from "pages/Dashboard/components/ContentComponent/contentTypes";
 
-const StyledPaper = styled(Paper)(({ color }: CardProps) => ({
+const StyledPaper = styled(Paper, {
+  shouldForwardProp: (prop) => prop !== "isDisabled",
+})(({ color, isDisabled }: CardProps & { isDisabled: boolean }) => ({
   display: "flex",
   flexDirection: "column",
   gap: 8,
@@ -19,9 +21,8 @@ const StyledPaper = styled(Paper)(({ color }: CardProps) => ({
   fontWeight: "bold",
   backgroundColor: color,
   color: "#FFF",
-  ":hover": {
-    cursor: "pointer",
-  },
+  cursor: isDisabled ? "not-allowed" : "pointer",
+  userSelect: "none",
 }));
 
 const StyledCardHeader = styled(Box)({
@@ -43,7 +44,11 @@ const StyledCardCOntent = styled(Box)({
 
 const Cards = ({ process }: CardProps) => {
   return (
-    <StyledPaper elevation={0} color={process.color}>
+    <StyledPaper
+      elevation={0}
+      color={process.color}
+      isDisabled={process.private}
+    >
       {process.private ? (
         <StyledCardHeader>
           <Box
