@@ -25,3 +25,18 @@ export const AppBar = styled(MuiAppBar, {
     }),
   }),
 }));
+
+export const pathStyles = {
+  display: "flex",
+  alignItems: "center",
+  justifyContent: "center",
+  gap: 2,
+  greyText: {
+    color: "#83828E",
+    fontWeight: "bold",
+  },
+  primaryText: {
+    fontWeight: "bold",
+    color: "#312E43",
+  },
+};

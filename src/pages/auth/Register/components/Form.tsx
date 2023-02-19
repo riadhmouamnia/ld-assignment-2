@@ -1,6 +1,5 @@
 import Box from "@mui/material/Box";
 import Button from "@mui/material/Button";
-import Checkbox from "@mui/material/Checkbox";
 import FormControlLabel from "@mui/material/FormControlLabel";
 import Typography from "@mui/material/Typography";
 import React from "react";
@@ -10,6 +9,7 @@ import { Formik, Form as FormikForm } from "formik";
 import * as yup from "yup";
 import Input from "../../../../components/Input";
 import { Link, useNavigate } from "react-router-dom";
+import CheckBox from "components/CheckBox";
 
 type InitialValues = {
   email: string;
@@ -75,7 +75,7 @@ function Form({ onNextStep }: Props) {
               <FormGroup>
                 <FormControlLabel
                   control={
-                    <Checkbox
+                    <CheckBox
                       onChange={(e) => setTermsAccpeted(e.target.checked)}
                     />
                   }
@@ -90,7 +90,7 @@ function Form({ onNextStep }: Props) {
                 />
                 <FormControlLabel
                   control={
-                    <Checkbox
+                    <CheckBox
                       onChange={(e) => setPrivacyAccepted(e.target.checked)}
                     />
                   }

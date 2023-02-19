@@ -1,7 +1,7 @@
 import { Box, Tab, Tabs, Typography } from "@mui/material";
 import { NavBarStyles } from "pages/Dashboard/components/MembersModal/styles";
 import NavLinks from "utils/MembersModalTabElements";
-import React, { useState } from "react";
+import React from "react";
 
 type Props = {
   value: number;

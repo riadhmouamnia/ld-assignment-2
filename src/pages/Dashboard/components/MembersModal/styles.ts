@@ -111,7 +111,6 @@ export const StyledInputBase = styled(InputBase)(({ theme }) => ({
 
 export const TabStyles = {
   container: {
-    // backgroundColor: "skyblue",
     width: "100%",
     height: "100%",
   },
@@ -120,6 +119,7 @@ export const TabStyles = {
     flexDirection: "row",
     justifyContent: "space-between",
     alignItems: "center",
+    marginBottom: 3,
   },
   InviteButton: {
     height: "32px",
