@@ -1,6 +1,5 @@
 import Box from "@mui/material/Box";
 import Button from "@mui/material/Button";
-import Checkbox from "@mui/material/Checkbox";
 import FormControlLabel from "@mui/material/FormControlLabel";
 import Typography from "@mui/material/Typography";
 import { useAppDispatch } from "../../../../redux/hooks";
@@ -11,6 +10,7 @@ import { Formik, Form as FormikForm } from "formik";
 import React from "react";
 import * as yup from "yup";
 import Input from "../../../../components/Input";
+import CheckBox from "components/CheckBox";
 
 type LoginResponse = UserInfo & { password: string };
 
@@ -103,7 +103,7 @@ function Form({ setAuthState, setSnackBarMsg }: Props) {
             >
               <FormControlLabel
                 control={
-                  <Checkbox
+                  <CheckBox
                     value="remember"
                     // color="error"
                     onChange={(e) => setIsRememberMe(e.target.checked)}

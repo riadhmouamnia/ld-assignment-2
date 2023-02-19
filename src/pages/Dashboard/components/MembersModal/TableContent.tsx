@@ -5,11 +5,11 @@ import TableCell from "@mui/material/TableCell";
 import TableHead from "@mui/material/TableHead";
 import TableRow from "@mui/material/TableRow";
 import Box from "@mui/material/Box";
-import Checkbox from "@mui/material/Checkbox";
 import { styled } from "@mui/material";
 import { InfosIcon, Trash } from "components/icons";
 import { IconButton } from "@mui/material";
 import { rows } from "utils/membersList";
+import CheckBox from "components/CheckBox";
 
 const StyledTableHead = styled(TableHead)({
   backgroundColor: "#F6F8FA",
@@ -29,6 +29,7 @@ const CenterIcon = {
 function TableContent() {
   const [tableData, setTableData] = useState([...rows]);
   const [isChecked, setIsChecked] = useState(Array(rows.length).fill(false));
+
   const handleCheckboxClick = (index: number) => {
     const newCheckedState = [...isChecked];
     newCheckedState[index] = !isChecked[index];
@@ -47,7 +48,7 @@ function TableContent() {
       <StyledTableHead>
         <TableRow>
           <TableCell>
-            <Checkbox
+            <CheckBox
               checked={isChecked.every(Boolean)}
               onChange={() => {
                 setIsChecked(
@@ -71,7 +72,7 @@ function TableContent() {
         {tableData.map((row, index) => (
           <TableRow key={row.id}>
             <TableCell>
-              <Checkbox
+              <CheckBox
                 checked={isChecked[index]}
                 onChange={() => handleCheckboxClick(index)}
               />
