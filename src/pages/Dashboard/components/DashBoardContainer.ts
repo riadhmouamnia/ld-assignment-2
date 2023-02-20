@@ -3,7 +3,8 @@ import { Box } from "@mui/material";
 
 const DashBoardContainer = styled(Box)({
   backgroundColor: "#F5F5F5",
-  height: "100vh",
+  minHeight: "100vh",
+  height: "100%",
   display: "flex",
 });
 

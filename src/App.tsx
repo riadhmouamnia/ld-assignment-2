@@ -6,7 +6,6 @@ import ErrorPage from "./pages/ErrorPage";
 import ProcessTable from "./pages/Dashboard/components/ProcessTable";
 import Layout from "./components/Layout";
 import { Routes, Route } from "react-router-dom";
-import RequireAuth from "./components/RequireAuth";
 
 function App() {
   return (
@@ -17,14 +16,11 @@ function App() {
       <Route path="reset" element={<Reset />} />
       {/* Private Route */}
       <Route path="/" element={<Layout />}>
-        <Route element={<RequireAuth />}>
-          <Route path="/" element={<Dashboard />} />
-          <Route path=":id" element={<ProcessTable />} />
-        </Route>
-
-        {/* Catch All */}
-        <Route path="*" element={<ErrorPage />} />
+        <Route path="/" element={<Dashboard />} />
+        <Route path=":id" element={<ProcessTable />} />
       </Route>
+      {/* Catch All */}
+      <Route path="*" element={<ErrorPage />} />
     </Routes>
   );
 }

@@ -1,4 +1,4 @@
-import React, { useState } from "react";
+import { useState } from "react";
 import Typography from "@mui/material/Typography";
 import { useAppSelector } from "../../../../redux/hooks";
 import Grid from "@mui/material/Grid";
@@ -6,11 +6,12 @@ import Cards from "./Cards";
 import { Box } from "@mui/material";
 import AddCard from "./AddCard";
 import CreateProcessModal from "./CreateProcessModal";
-import { DataProps } from "./contentTypes";
 import { Spacer } from "../ProcessTable/styles/styles";
 import { useNavigate } from "react-router-dom";
+import { HeaderText } from "pages/Dashboard/components/ContentComponent/Styles";
 
-const ContentComponent = ({ data }: DataProps) => {
+const ContentComponent = () => {
+  const { processData } = useAppSelector(({ data }) => data);
   const [open, setOpen] = useState<boolean>(false);
   const { userInfo } = useAppSelector(({ auth }) => auth);
   const HndleOpen = () => {
@@ -21,7 +22,7 @@ const ContentComponent = ({ data }: DataProps) => {
     <Box p={6}>
       <CreateProcessModal open={open} setOpen={setOpen} />
       <Spacer />
-      <Box width="600px" display="flex" flexDirection="column" gap={2}>
+      <HeaderText>
         <Typography variant="h4" color="text.primary">
           Welcome,{userInfo?.name}
         </Typography>
@@ -29,12 +30,12 @@ const ContentComponent = ({ data }: DataProps) => {
           Work with your team mates. take track of your process and close all
           tasks
         </Typography>
-      </Box>
+      </HeaderText>
       <Grid container gap={3} mt={4}>
         <Grid item>
           <AddCard HndleOpen={HndleOpen} />
         </Grid>
-        {data?.map((p) => (
+        {processData?.map((p) => (
           <Grid
             item
             key={p.id}

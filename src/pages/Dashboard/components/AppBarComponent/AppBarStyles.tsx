@@ -1,6 +1,7 @@
 import styled from "@emotion/styled";
 import MuiAppBar, { AppBarProps as MuiAppBarProps } from "@mui/material/AppBar";
-import { drawerWidth } from "../../DrawerComponent/styles/drawerStyles";
+import Box from "@mui/material/Box";
+import { drawerWidth } from "../DrawerComponent/styles/drawerStyles";
 
 export interface AppBarProps extends MuiAppBarProps {
   open?: boolean;
@@ -40,3 +41,19 @@ export const pathStyles = {
     color: "#312E43",
   },
 };
+
+export const AvatarStyles = {
+  bgcolor: "#96E7DE",
+  borderRadius: "8px",
+  width: "40px",
+  height: "40px",
+  fontSize: "16px",
+  fontWeight: "bold",
+};
+
+export const AppBarContainer = styled(Box)({
+  width: "100%",
+  display: "flex",
+  alignItems: "center",
+  justifyContent: "space-between",
+});
