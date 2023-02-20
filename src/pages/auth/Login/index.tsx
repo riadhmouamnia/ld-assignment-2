@@ -2,9 +2,9 @@ import { Alert, Snackbar } from "@mui/material";
 import React from "react";
 import { Box, Typography } from "@mui/material";
 import { Link } from "react-router-dom";
-import AuthWrapper from "../Layout/AuthWrapper";
-import Cover from "./components/Cover";
-import Form from "./components/Form";
+import AuthWrapper from "pages/auth/Layout/AuthWrapper";
+import Cover from "pages/auth/Login/components/Cover";
+import Form from "pages/auth/Login/components/Form";
 
 function Login() {
   const [authState, setAuthState] = React.useState<{

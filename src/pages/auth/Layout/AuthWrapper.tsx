@@ -1,9 +1,9 @@
 import React from "react";
-import { Box, Grid, Typography, styled } from "@mui/material";
+import { Box, Grid, Typography } from "@mui/material";
 import Paper from "@mui/material/Paper";
-import logo from "../../../assets/logo.svg";
+import logo from "assets/logo.svg";
 import { useNavigate } from "react-router-dom";
-import { useAppSelector } from "../../../redux/hooks";
+import { useAppSelector } from "redux/hooks";
 
 type AuthWrapperProps = {
   title: String;

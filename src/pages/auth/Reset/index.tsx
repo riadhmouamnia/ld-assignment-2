@@ -1,9 +1,9 @@
 import React from "react";
-import AuthWrapper from "../Layout/AuthWrapper";
-import EmailSent from "../shared/EmailSent";
-import Cover from "./components/Cover";
-import Form from "./components/Form";
-import StepTwo from "./components/StepTwo";
+import AuthWrapper from "pages/auth/Layout/AuthWrapper";
+import EmailSent from "pages/auth/shared/EmailSent";
+import Cover from "pages/auth/Reset/components/Cover";
+import Form from "pages/auth/Reset/components/Form";
+import StepTwo from "pages/auth/Reset/components/StepTwo";
 
 function index() {
   const [currentStep, setCurrentStep] = React.useState(0);

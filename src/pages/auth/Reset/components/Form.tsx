@@ -3,7 +3,7 @@ import Button from "@mui/material/Button";
 import Typography from "@mui/material/Typography";
 import { Link, useNavigate } from "react-router-dom";
 import { Formik, Form as FormikForm } from "formik";
-import Input from "../../../../components/Input";
+import Input from "components/Input";
 import * as yup from "yup";
 
 type InitialValues = {

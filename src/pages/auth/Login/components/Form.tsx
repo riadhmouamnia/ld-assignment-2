@@ -2,17 +2,16 @@ import Box from "@mui/material/Box";
 import Button from "@mui/material/Button";
 import FormControlLabel from "@mui/material/FormControlLabel";
 import Typography from "@mui/material/Typography";
-import { useAppDispatch } from "../../../../redux/hooks";
+import { useAppDispatch } from "redux/hooks";
 import { Link, useNavigate } from "react-router-dom";
-import { login, UserInfo } from "../../../../redux/features/auth/authSlice";
-import { cacheService } from "../../../../utils/cacheService";
+import { login, UserInfo } from "redux/features/auth/authSlice";
+import { cacheService } from "utils/cacheService";
 import { Formik, Form as FormikForm } from "formik";
 import React from "react";
 import * as yup from "yup";
-import Input from "../../../../components/Input";
+import Input from "components/Input";
 import CheckBox from "components/CheckBox";
-
-type LoginResponse = UserInfo & { password: string };
+import useAxiosFetch from "hooks/useAxiosFetch";
 
 type InitialValues = {
   email: string;
@@ -26,32 +25,26 @@ interface Props {
 
 function Form({ setAuthState, setSnackBarMsg }: Props) {
   const [isRememberMe, setIsRememberMe] = React.useState<boolean>(false);
+  const { data, fetchError } = useAxiosFetch("http://localhost:3000/users");
   const dispatch = useAppDispatch();
   const navigate = useNavigate();
 
   const onSubmit = async (values: InitialValues) => {
-    try {
-      const response = await fetch("http://localhost:3000/users");
-      if (!response) {
-      }
-      console.log(response);
-      if (response.status === 404) {
-        setSnackBarMsg("404 Error resource not found!");
+    if (fetchError) {
+      setSnackBarMsg(fetchError);
+      setAuthState({ idle: false, isAuthFailure: true });
+      return;
+    }
+    if (data) {
+      const user = data.find(
+        (user: any) =>
+          user.email === values.email && user.password === values.password
+      );
+      if (!user) {
+        setSnackBarMsg("User not found!");
         setAuthState({ idle: false, isAuthFailure: true });
-        throw new Error("404 Error resource not found!");
-      }
-      if (response.status === 200 && response.statusText === "OK") {
-        const users = (await response.json()) as LoginResponse[];
-        const user = users.find(
-          (user: any) =>
-            user.email === values.email && user.password === values.password
-        );
-        if (!user) {
-          setSnackBarMsg("User not found!");
-          setAuthState({ idle: false, isAuthFailure: true });
-          return;
-        }
-        //If we have a user save them to our local storage and log them in
+        return;
+      } else {
         const { password: _password, ...rest } = user;
         if (isRememberMe) cacheService.saveState("user", { userInfo: rest });
         setSnackBarMsg("Loged in successfully!");
@@ -61,8 +54,6 @@ function Form({ setAuthState, setSnackBarMsg }: Props) {
           navigate("/");
         }, 1500);
       }
-    } catch (error) {
-      console.log(error);
     }
   };
 

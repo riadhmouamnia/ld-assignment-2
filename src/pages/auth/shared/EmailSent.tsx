@@ -1,6 +1,6 @@
 import Box from "@mui/material/Box";
 import React from "react";
-import checked from "../../../assets/auth/checked.svg";
+import checked from "assets/auth/checked.svg";
 interface Props {
   onNextStep: () => void;
 }
