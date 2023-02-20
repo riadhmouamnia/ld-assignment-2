@@ -1,6 +1,6 @@
 import AppBarComponent from "pages/Dashboard/components/AppBarComponent";
 import DrawerComponent from "pages/Dashboard/components/DrawerComponent";
-import DashBoardContainer from "pages/Dashboard/components/DashBoardContainer";
+import DashBoardContainer from "components/DashBoardContainer";
 import { useState } from "react";
 import { useLocation, Navigate, Outlet } from "react-router-dom";
 import { useAppSelector } from "redux/hooks";
