@@ -2,7 +2,7 @@ import Button from "@mui/material/Button";
 import { Formik, Form } from "formik";
 import * as yup from "yup";
 import { useSearchParams } from "react-router-dom";
-import Input from "../../../../components/Input";
+import Input from "components/Input";
 
 type InitialValues = {
   password: string;

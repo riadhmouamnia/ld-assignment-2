@@ -2,17 +2,17 @@
   "users": [
     {
       "id": 1,
-      "email": "user1@example.com",
+      "email": "michele.cimmino@lastingdynamics.com",
       "password": "password1",
       "workspace": "My Awesome workSpace",
-      "name": "Christiano",
-      "surname": "Ronaldo"
+      "name": "Michele",
+      "surname": "Cimmino"
     },
     {
       "id": 2,
       "email": "user2@example.com",
       "password": "password2",
-      "workspace": "your Shitty workSpace",
+      "workspace": "your workSpace",
       "name": "Chris",
       "surname": "Brown"
     },
@@ -20,7 +20,7 @@
       "id": 3,
       "email": "user3@example.com",
       "password": "password3",
-      "workspace": "My Awesome workSpace",
+      "workspace": "Work Hard",
       "name": "Dwayen",
       "surname": "Wade"
     }
@@ -178,6 +178,13 @@
           "date": "01/21/2023"
         }
       ]
+    },
+    {
+      "name": "new process",
+      "color": "#FF2200",
+      "private": false,
+      "data": [],
+      "id": 10
     }
   ]
 }

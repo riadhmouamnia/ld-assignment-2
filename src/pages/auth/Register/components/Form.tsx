@@ -7,7 +7,7 @@ import { styled } from "@mui/material/styles";
 import { FormGroup } from "@mui/material";
 import { Formik, Form as FormikForm } from "formik";
 import * as yup from "yup";
-import Input from "../../../../components/Input";
+import Input from "components/Input";
 import { Link, useNavigate } from "react-router-dom";
 import CheckBox from "components/CheckBox";
 

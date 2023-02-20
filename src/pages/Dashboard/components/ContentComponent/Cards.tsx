@@ -1,4 +1,3 @@
-import React from "react";
 import Paper from "@mui/material/Paper/Paper";
 import Box from "@mui/material/Box";
 import Typography from "@mui/material/Typography";

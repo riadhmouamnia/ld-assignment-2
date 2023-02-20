@@ -1,9 +1,9 @@
 import { Box, Typography } from "@mui/material";
-import Ellipse from "../../../../assets/auth/signup/Ellipse.svg";
-import Polygon from "../../../../assets/auth/signup/Polygon.svg";
-import HalfEllipse from "../../../../assets/auth/signup/HalfEllipse.svg";
-import Rectangle from "../../../../assets/auth/signup/Rectangle.svg";
-import dotts from "../../../../assets/auth/signup/dottsSignup.svg";
+import Ellipse from "assets/auth/signup/Ellipse.svg";
+import Polygon from "assets/auth/signup/Polygon.svg";
+import HalfEllipse from "assets/auth/signup/HalfEllipse.svg";
+import Rectangle from "assets/auth/signup/Rectangle.svg";
+import dotts from "assets/auth/signup/dottsSignup.svg";
 
 function Cover() {
   return (

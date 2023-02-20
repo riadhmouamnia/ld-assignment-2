@@ -1,9 +1,8 @@
-import { Box, Button, TextField } from "@mui/material";
-import React from "react";
+import { Box, Button } from "@mui/material";
 import { useSearchParams } from "react-router-dom";
 import { Formik, Form } from "formik";
 import * as yup from "yup";
-import Input from "../../../../components/Input";
+import Input from "components/Input";
 type InitialValues = {
   name: string;
   surName: string;

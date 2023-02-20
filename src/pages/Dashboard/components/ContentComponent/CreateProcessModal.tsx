@@ -1,38 +1,46 @@
-import { useNavigate } from "react-router";
-import Input from "../../../../components/Input";
 import Button from "@mui/material/Button";
 import Typography from "@mui/material/Typography";
 import Box from "@mui/material/Box";
-import { Formik, Form as FormikForm } from "formik";
-import * as yup from "yup";
-import { IconButton, InputAdornment, Modal } from "@mui/material";
+import { IconButton, InputAdornment, Modal, TextField } from "@mui/material";
 import CloseIcon from "@mui/icons-material/Close";
-import { style } from "./styles/ModelStyles";
-import {
-  CreateProcessModalProps,
-  CreateProcessModalInitialValues,
-} from "./contentTypes";
+import { CreateProcessModalProps } from "./contentTypes";
 import { Circle, ColorPalette } from "components/icons";
 import { useState } from "react";
+import { addProcess } from "redux/features/data/dataSlice";
+import { useAppDispatch } from "redux/hooks";
+import axios from "axios";
+import { style } from "pages/Dashboard/components/ContentComponent/CreateProcessModalStyles";
 
 function CreateProcessModal({ open, setOpen }: CreateProcessModalProps) {
-  const navigate = useNavigate();
   const [color, setColor] = useState("#FF2200");
+  const [processName, setProcessName] = useState("");
+  const dispatch = useAppDispatch();
 
-  const handleChange = (e: any) => {
+  const handleColorChange = (e: any) => {
     setColor(e.target.value);
   };
+  const handleProcessChange = (e: any) => {
+    setProcessName(e.target.value);
+  };
 
-  const onSubmit = async (values: CreateProcessModalInitialValues) => {
+  const onSubmit: React.FormEventHandler<HTMLFormElement> = async (e) => {
+    e.preventDefault();
     try {
-      const response = await fetch("http://localhost:3000/processes", {
-        method: "POST",
-        headers: { "content-type": "application/json" },
-        body: JSON.stringify({ ...values, private: false, data: [] }),
-      });
-      console.log(response);
-      navigate("/");
+      const data = {
+        name: processName,
+        color: color,
+        private: false,
+        data: [],
+      };
+      const response = await axios.post(
+        "http://localhost:3000/processes",
+        data
+      );
+      // console.log(response.data);
       setOpen(false);
+      dispatch(addProcess(response.data));
+      setProcessName("");
+      setColor("");
     } catch (error) {
       console.log(error);
     }
@@ -50,67 +58,57 @@ function CreateProcessModal({ open, setOpen }: CreateProcessModalProps) {
               <CloseIcon />
             </IconButton>
           </Box>
-          <Formik
-            initialValues={{ name: "", color: "" }}
-            onSubmit={onSubmit}
-            validationSchema={yup.object({
-              name: yup.string(),
-              color: yup.string(),
-            })}
-          >
-            {() => (
-              <FormikForm>
-                <Input
-                  margin="normal"
-                  fullWidth
-                  label="Process name"
-                  name="name"
-                  size="small"
-                />
-                <Input
-                  margin="normal"
-                  fullWidth
-                  name="color"
-                  label="Color"
-                  value={color}
-                  onChange={handleChange}
-                  size="small"
-                  InputProps={{
-                    startAdornment: (
-                      <InputAdornment position="start">
-                        <Circle fill={color} />
-                      </InputAdornment>
-                    ),
-                    endAdornment: (
-                      <InputAdornment position="start">
-                        <ColorPalette />
-                      </InputAdornment>
-                    ),
-                  }}
-                />
-
-                <Box sx={style.buttons}>
-                  <Button
-                    variant="outlined"
-                    disableElevation
-                    sx={style.buttons.cancle}
-                    onClick={() => setOpen(false)}
-                  >
-                    Cancel
-                  </Button>
-                  <Button
-                    type="submit"
-                    variant="contained"
-                    color="secondary"
-                    disableElevation
-                    sx={style.buttons.create}
-                  >
-                    Create
-                  </Button>
-                </Box>
-              </FormikForm>
-            )}
-          </Formik>
+          <Box component="form" onSubmit={onSubmit}>
+            <TextField
+              margin="normal"
+              fullWidth
+              label="Process name"
+              name="name"
+              size="small"
+              value={processName}
+              onChange={handleProcessChange}
+            />
+            <TextField
+              margin="normal"
+              fullWidth
+              label="Color"
+              name="color"
+              size="small"
+              value={color}
+              onChange={handleColorChange}
+              InputProps={{
+                startAdornment: (
+                  <InputAdornment position="start">
+                    <Circle fill={color} />
+                  </InputAdornment>
+                ),
+                endAdornment: (
+                  <InputAdornment position="start">
+                    <ColorPalette />
+                  </InputAdornment>
+                ),
+              }}
+            />
+            <Box sx={style.buttons}>
+              <Button
+                variant="outlined"
+                disableElevation
+                sx={style.buttons.cancle}
+                onClick={() => setOpen(false)}
+              >
+                Cancel
+              </Button>
+              <Button
+                type="submit"
+                variant="contained"
+                color="secondary"
+                disableElevation
+                sx={style.buttons.create}
+              >
+                Create
+              </Button>
+            </Box>
+          </Box>
         </Box>
       </Box>
     </Modal>

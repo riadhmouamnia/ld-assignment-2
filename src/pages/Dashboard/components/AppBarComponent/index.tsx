@@ -5,15 +5,21 @@ import {
   Typography,
   Link as MUILink,
 } from "@mui/material";
-import { AppBar, AppBarProps, pathStyles } from "./styles/AppBarStyles";
-import stringAvatar from "./stringAvatar";
-import Events from "../../../../assets/Events.svg";
-import Bell from "../../../../assets/Bell.svg";
+import stringAvatar from "pages/Dashboard/components/AppBarComponent/stringAvatar";
+import Events from "assets/Events.svg";
 import Avatar from "@mui/material/Avatar";
 
-import { useAppSelector } from "../../../../redux/hooks";
+import { useAppSelector } from "redux/hooks";
 import { Link, useParams } from "react-router-dom";
-import { ChevronRight } from "components/icons";
+import { BellIcon, ChevronRight } from "components/icons";
+import {
+  AppBar,
+  AppBarContainer,
+  AppBarProps,
+  AvatarStyles,
+  pathStyles,
+} from "pages/Dashboard/components/AppBarComponent/AppBarStyles";
+import IconButton from "@mui/material/IconButton";
 
 function AppBarComponent({ open }: AppBarProps) {
   const { userInfo } = useAppSelector(({ auth }) => auth);
@@ -21,28 +27,7 @@ function AppBarComponent({ open }: AppBarProps) {
   return (
     <AppBar open={open} elevation={0}>
       <Toolbar>
-        <Box
-          width="100%"
-          display="flex"
-          alignItems="center"
-          justifyContent="space-between"
-        >
-          {/* {id ? (
-            <Box sx={pathStyles}>
-              <Typography variant="h6" sx={pathStyles.greyText}>
-                
-              </Typography>
-              <ChevronRight />
-              <Typography variant="h6" sx={pathStyles.primaryText}>
-                Process {id}
-              </Typography>
-            </Box>
-          ) : (
-            <Typography variant="h6" sx={pathStyles.primaryText}>
-              Process
-            </Typography>
-          )} */}
-
+        <AppBarContainer>
           <Breadcrumbs
             separator={<ChevronRight fontSize="small" />}
             aria-label="breadcrumb"
@@ -63,22 +48,19 @@ function AppBarComponent({ open }: AppBarProps) {
           </Breadcrumbs>
 
           <Box display="flex" alignItems="center" gap={2}>
-            <Box component="img" src={Bell} width="20px" height="20px" />
-            <Box component="img" src={Events} width="26px" height="26px" />
+            <IconButton>
+              <BellIcon />
+            </IconButton>
+            <IconButton>
+              <Box component="img" src={Events} width="26px" height="26px" />
+            </IconButton>
             <Avatar
               {...stringAvatar(`${userInfo?.name} ${userInfo?.surname}`)}
-              sx={{
-                bgcolor: "#96E7DE",
-                borderRadius: "8px",
-                width: "40px",
-                height: "40px",
-                fontSize: "16px",
-                fontWeight: "bold",
-              }}
+              sx={AvatarStyles}
               variant="square"
             />
           </Box>
-        </Box>
+        </AppBarContainer>
       </Toolbar>
     </AppBar>
   );
