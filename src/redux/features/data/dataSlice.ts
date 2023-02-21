@@ -1,16 +1,29 @@
 import axios from "axios";
 import { createAsyncThunk, createSlice } from "@reduxjs/toolkit";
-import { cacheService } from "utils/cacheService";
 
-export const getProcesses = createAsyncThunk("data/processData", () => {
+export const getProcesses = createAsyncThunk("data/getProcesses", () => {
   return axios
     .get("http://localhost:3000/processes")
     .then((response) => response.data);
 });
+export const postProcess = createAsyncThunk(
+  "data/postProcess",
+  (process: Process) => {
+    return axios
+      .post("http://localhost:3000/processes", process)
+      .then((response) => response.data);
+  }
+);
+
+type Process = {
+  name: string;
+  color: string;
+  private?: boolean;
+};
 
 export type DataType = {
   id: number;
-  processName: string;
+  name: string;
   color: string;
   private?: boolean;
 };
@@ -21,7 +34,6 @@ type InitialState = {
   isSuccess: boolean;
 };
 
-// const data = cacheService.loadState("data");
 const initialState: InitialState = {
   processData: [],
   loading: false,
@@ -32,11 +44,7 @@ const initialState: InitialState = {
 const dataSlice = createSlice({
   name: "data",
   initialState,
-  reducers: {
-    addProcess(state, action) {
-      state.processData.push(action.payload);
-    },
-  },
+  reducers: {},
   extraReducers: (builder) => {
     builder.addCase(getProcesses.pending, (state, action) => {
       state.loading = true;
@@ -53,8 +61,10 @@ const dataSlice = createSlice({
       state.processData = [];
       state.error = action.error.message;
     });
+    builder.addCase(postProcess.fulfilled, (state, action) => {
+      state.processData.push(action.payload);
+    });
   },
 });
 
 export default dataSlice.reducer;
-export const { addProcess } = dataSlice.actions;
