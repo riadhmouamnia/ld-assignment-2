@@ -6,10 +6,9 @@ import CloseIcon from "@mui/icons-material/Close";
 import { CreateProcessModalProps } from "./contentTypes";
 import { Circle, ColorPalette } from "components/icons";
 import { useState } from "react";
-import { addProcess } from "redux/features/data/dataSlice";
 import { useAppDispatch } from "redux/hooks";
-import axios from "axios";
 import { style } from "pages/Dashboard/components/ContentComponent/CreateProcessModalStyles";
+import { postProcess } from "redux/features/data/dataSlice";
 
 function CreateProcessModal({ open, setOpen }: CreateProcessModalProps) {
   const [color, setColor] = useState("#FF2200");
@@ -23,27 +22,17 @@ function CreateProcessModal({ open, setOpen }: CreateProcessModalProps) {
     setProcessName(e.target.value);
   };
 
-  const onSubmit: React.FormEventHandler<HTMLFormElement> = async (e) => {
+  const onSubmit: React.FormEventHandler<HTMLFormElement> = (e) => {
     e.preventDefault();
-    try {
-      const data = {
-        name: processName,
-        color: color,
-        private: false,
-        data: [],
-      };
-      const response = await axios.post(
-        "http://localhost:3000/processes",
-        data
-      );
-      // console.log(response.data);
-      setOpen(false);
-      dispatch(addProcess(response.data));
-      setProcessName("");
-      setColor("");
-    } catch (error) {
-      console.log(error);
-    }
+    const data = {
+      name: processName,
+      color: color,
+      private: false,
+    };
+    dispatch(postProcess(data));
+    setOpen(false);
+    setProcessName("");
+    setColor("");
   };
 
   return (
