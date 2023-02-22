@@ -8,7 +8,7 @@ type Props = {
   setIsProcessModel: (boolean: boolean) => void;
 };
 
-function index({ setIsProcessModel }: Props) {
+function Footer({ setIsProcessModel }: Props) {
   return (
     <Box sx={footerWrapper}>
       <Box sx={FooterText.flexItems}>
@@ -39,4 +39,4 @@ function index({ setIsProcessModel }: Props) {
   );
 }
 
-export default index;
+export default Footer;

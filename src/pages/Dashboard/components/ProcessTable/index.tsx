@@ -7,7 +7,7 @@ import InfoPanel from "pages/Dashboard/components/ProcessTable/InfoPanel";
 import ProcessModel from "pages/Dashboard/components/ProcessModel";
 import MembersModal from "pages/Dashboard/components/MembersModal";
 
-function index() {
+function ProcessTable() {
   const [isInfoPanelOpen, setIsInfoPanel] = useState(false);
   const [isProcessModelOpen, setIsProcessModel] = useState(false);
   const [isMembersModalOpen, setIsMembersModal] = useState(false);
@@ -36,4 +36,4 @@ function index() {
   );
 }
 
-export default index;
+export default ProcessTable;

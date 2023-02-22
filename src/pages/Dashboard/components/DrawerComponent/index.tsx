@@ -17,7 +17,7 @@ type Props = {
   setOpen: (open: boolean) => void;
 };
 
-function SideDrawer({ open, setOpen }: Props) {
+function DrawerComponent({ open, setOpen }: Props) {
   const navigate = useNavigate();
   const dispatch = useAppDispatch();
   const handleDrawerClose = () => {
@@ -93,4 +93,4 @@ function SideDrawer({ open, setOpen }: Props) {
   );
 }
 
-export default SideDrawer;
+export default DrawerComponent;

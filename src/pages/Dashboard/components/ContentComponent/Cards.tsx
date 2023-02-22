@@ -39,6 +39,7 @@ const StyledCardCOntent = styled(Box)({
   alignItems: "center",
   width: "126px",
   height: "64px",
+  padding: 2,
 });
 
 const Cards = ({ process }: CardProps) => {

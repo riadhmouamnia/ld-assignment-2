@@ -4,7 +4,7 @@ import DialogLeftSide from "pages/Dashboard/components/ProcessModel/Body/DialogL
 import TabsComponent from "pages/Dashboard/components/ProcessModel/Body/TabsComponent";
 import FieldPhase from "pages/Dashboard/components/ProcessModel/Body/FieldPhase";
 
-function styles() {
+function Body() {
   return (
     <Box sx={container}>
       <DialogLeftSide />
@@ -14,4 +14,4 @@ function styles() {
   );
 }
 
-export default styles;
+export default Body;
