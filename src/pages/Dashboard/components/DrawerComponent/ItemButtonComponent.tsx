@@ -1,7 +1,13 @@
 import { ListItemButton, ListItemIcon, ListItemText } from "@mui/material";
-import { StyledIcon } from "./styles/drawerStyles";
+import { StyledIcon } from "pages/Dashboard/components/DrawerComponent/styles/drawerStyles";
 
-function ItemButtonComponent({ open, handleLogout, element }) {
+type Props = {
+  open: boolean;
+  handleLogout: () => void;
+  element: any;
+};
+
+function ItemButtonComponent({ open, handleLogout, element }: Props) {
   return (
     <>
       <ListItemButton

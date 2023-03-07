@@ -178,13 +178,6 @@
           "date": "01/21/2023"
         }
       ]
-    },
-    {
-      "name": "new process",
-      "color": "#FF2200",
-      "private": false,
-      "data": [],
-      "id": 10
     }
   ]
 }

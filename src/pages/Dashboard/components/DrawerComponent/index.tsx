@@ -3,14 +3,17 @@ import ListItem from "@mui/material/ListItem";
 import ListItemButton from "@mui/material/ListItemButton";
 import ListItemIcon from "@mui/material/ListItemIcon";
 import ListItemText from "@mui/material/ListItemText";
-import { StyledIcon, Drawer } from "./styles/drawerStyles";
-import { draworElemnts } from "./drawerElemnts";
+import {
+  StyledIcon,
+  Drawer,
+} from "pages/Dashboard/components/DrawerComponent/styles/drawerStyles";
+import { draworElemnts } from "pages/Dashboard/components/DrawerComponent/drawerElemnts";
 import { useNavigate } from "react-router-dom";
-import { useAppDispatch } from "../../../../redux/hooks";
-import { logout } from "../../../../redux/features/auth/authSlice";
-import { cacheService } from "../../../../utils/cacheService";
-import DrawerHeaderComponent from "./DrawerHeaderComponent";
-import DraweFooterComponent from "./DrawerFooterComponent";
+import { useAppDispatch } from "redux/hooks";
+import { logout } from "redux/features/auth/authSlice";
+import { cacheService } from "utils/cacheService";
+import DrawerHeaderComponent from "pages/Dashboard/components/DrawerComponent/DrawerHeaderComponent";
+import DraweFooterComponent from "pages/Dashboard/components/DrawerComponent/DrawerFooterComponent";
 
 type Props = {
   open: boolean;
