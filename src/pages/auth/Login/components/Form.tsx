@@ -25,7 +25,9 @@ interface Props {
 
 function Form({ setAuthState, setSnackBarMsg }: Props) {
   const [isRememberMe, setIsRememberMe] = React.useState<boolean>(false);
-  const { data, fetchError } = useAxiosFetch("http://localhost:3000/users");
+  const { data, fetchError } = useAxiosFetch(
+    "https://coraly-academy.onrender.com/users"
+  );
   const dispatch = useAppDispatch();
   const navigate = useNavigate();
 

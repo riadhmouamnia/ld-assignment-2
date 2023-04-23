@@ -3,14 +3,14 @@ import { createAsyncThunk, createSlice } from "@reduxjs/toolkit";
 
 export const getProcesses = createAsyncThunk("data/getProcesses", () => {
   return axios
-    .get("http://localhost:3000/processes")
+    .get("https://coraly-academy.onrender.com/processes")
     .then((response) => response.data);
 });
 export const postProcess = createAsyncThunk(
   "data/postProcess",
   (process: Process) => {
     return axios
-      .post("http://localhost:3000/processes", process)
+      .post("https://coraly-academy.onrender.com/processes", process)
       .then((response) => response.data);
   }
 );
