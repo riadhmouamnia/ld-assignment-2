@@ -6,7 +6,7 @@ export const container = {
 
 export const dialogRightSide = {
   display: "flex",
-  height: "600px",
+  height: "550px",
   overFlowY: "hidden",
   flex: "4",
   flexDirection: "column",

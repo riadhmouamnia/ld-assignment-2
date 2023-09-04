@@ -1,7 +1,6 @@
-import { styled, Theme, CSSObject, makeStyles } from "@mui/material/styles";
+import { styled, Theme, CSSObject } from "@mui/material/styles";
 import MuiDrawer from "@mui/material/Drawer";
 import Icon from "@mui/material/Icon";
-import ListItemIcon from "@mui/material/ListItemIcon";
 
 export const drawerWidth = 240;
 
@@ -46,7 +45,7 @@ export const DrawerHeader = styled("div")(({ theme }) => ({
 export const DraweFooter = styled("div")(({ theme }) => ({
   display: "flex",
   alignItems: "center",
-  marginTop: 140,
+  marginBottom: 10,
   justifyContent: "center",
   color: "white",
   padding: theme.spacing(0, 1),
