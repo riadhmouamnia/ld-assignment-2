@@ -84,7 +84,7 @@ export const appBarStyles = {
     display: "flex",
     alignItems: "center",
     gap: 1,
-    paddingRight: "20px",
+    paddingRight: "30px",
   },
   icon: {
     width: "28px",
@@ -162,9 +162,31 @@ export const drawerStyles = {
   "& .MuiPaper-root": {
     width: "381px",
     top: "126px",
-    padding: "0 24px",
+    height: "80%",
+    overflowY: "scroll",
+    padding: "24px 24px",
     backgroundColor: "#fff",
     color: "#5A5869",
+    "::-webkit-scrollbar": {
+      width: "6px",
+      borderRadius: "20px",
+    },
+    /* Track */
+    "::-webkit-scrollbar-track": {
+      background: "#D6D5D9",
+      borderRadius: "20px",
+    },
+
+    /* Handle */
+    "::-webkit-scrollbar-thumb": {
+      background: "#C1C0C7",
+      borderRadius: "20px",
+    },
+
+    /* Handle on hover */
+    "::-webkit-scrollbar-thumb:hover": {
+      background: "#747377",
+    },
   },
   dropDown: {
     display: "flex",
@@ -193,6 +215,7 @@ export const drawerStyles = {
     display: "flex",
     justifyContent: "space-between",
     alignItems: "center",
+    marginBottom: "20px",
   },
   container: {
     marginTop: "12px",

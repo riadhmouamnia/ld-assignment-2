@@ -2,6 +2,7 @@ export const footerWrapper = {
   display: "flex",
   justifyContent: "space-between",
   alignItems: "center",
+  marginTop: "15px",
 
   Buttons: {
     marginTop: "12px",

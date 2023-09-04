@@ -4,7 +4,7 @@ export const modelStyles = {
   left: "52.2%",
   transform: "translate(-50%, -50%)",
   width: "90%",
-  height: "88%",
+  height: "88vh",
   bgcolor: "#FFF",
   outline: "none",
   borderRadius: 2,
@@ -22,7 +22,7 @@ export const colors = {
 };
 
 export const DialogContainer = {
-  height: "600px",
+  height: "550px",
   overflowY: "scroll",
   padding: "0px 16px",
   flex: 4,

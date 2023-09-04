@@ -89,8 +89,8 @@ function DrawerComponent({ open, setOpen }: Props) {
               )}
             </ListItem>
           ))}
-          <DraweFooterComponent />
         </List>
+        <DraweFooterComponent />
       </Drawer>
     </div>
   );
